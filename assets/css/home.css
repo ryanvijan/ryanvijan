@@ -267,7 +267,7 @@ body.dark, body.dark .page {
   position: absolute;           /* stays in the left gutter */
   top: 180px;                   /* adjust for vertical position */
   left: -280px;                 /* slightly off-screen to slide in */
-  width: 260px;
+  width: 160px;
   padding: 12px 14px 14px;
   border-radius: 14px;
   background: rgba(20, 20, 25, 0.95);
