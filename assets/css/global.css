@@ -232,3 +232,21 @@ li {
     max-width: 100%;
   }
 }
+/* ==== FORCE BLUE ACTIVE TAB ON ALL PAGES ==== */
+.top-nav nav a {
+  margin-left: 14px;
+  text-transform: lowercase;
+  color: #a3a3b0;
+  font-weight: 300;
+  transition: color 0.15s ease;
+}
+
+.top-nav nav a:hover {
+  color: #ffffff;
+}
+
+/* this is the important part */
+.top-nav nav a.active {
+  color: #7fb3ff !important;     /* force blue */
+  font-weight: 400 !important;
+}
