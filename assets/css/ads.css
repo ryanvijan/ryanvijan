@@ -1,0 +1,44 @@
+#ad-container {
+  position: fixed;
+  top: 200px; /* Below the name/title area */
+  left: 40px;
+  width: 220px; /* thinner */
+  height: calc(100vh - 260px); /* stretches toward bottom of screen */
+
+  background: rgba(20, 20, 20, 0.94);
+  border-radius: 14px;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.75);
+  border: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(14px);
+
+  display: none;
+  padding: 16px;
+  z-index: 2000;
+
+  overflow: hidden; /* ensures no weird spillover */
+}
+
+/* ad image */
+#ad-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* close button */
+#ad-close-btn {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-size: 14px;
+  color: #ccc;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.05);
+  transition: background 0.2s ease;
+}
+
+#ad-close-btn:hover {
+  background: rgba(255,255,255,0.15);
+}
