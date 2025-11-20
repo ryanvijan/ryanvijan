@@ -1,0 +1,240 @@
+/* ========== RESET / BASE ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body.dark {
+  background: #050506;
+  color: #e5e5e7;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.page {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+  padding-top: 64px; /* space for menu bar */
+  min-height: 100vh; /* makes page fill screen */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ========== macOS MENU BAR ========== */
+.menu-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 24px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 300;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #f5f5f5;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.menu-left,
+.menu-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.apple-logo {
+  font-size: 14px;
+  margin-right: 6px;
+}
+
+.battery {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.battery-icon {
+  width: 22px;
+  height: 10px;
+  border-radius: 2px;
+  border: 1px solid currentColor;
+  position: relative;
+}
+
+.battery-icon::after {
+  content: "";
+  position: absolute;
+  right: -3px;
+  top: 2px;
+  width: 3px;
+  height: 6px;
+  border-radius: 1px;
+  background: currentColor;
+}
+
+.battery-level {
+  position: absolute;
+  inset: 1px;
+  border-radius: 1px;
+  background: currentColor;
+}
+
+/* ========== TOP NAV (PAGE SELECTOR) ========== */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  font-size: 0.9rem;
+  gap: 24px;
+}
+
+.top-nav .logo {
+  max-width: 60%;
+  color: #9ca3af;
+}
+
+.top-nav nav a {
+  margin-left: 14px;
+  text-transform: lowercase;
+  color: #a3a3b0;
+  font-weight: 300;
+  transition: color 0.15s ease;
+}
+
+.top-nav nav a:hover {
+  color: #ffffff;
+}
+
+.top-nav nav a.active {
+  color: #7fb3ff;
+  font-weight: 400;
+}
+
+/* ========== WORK(S) CONTENT ========== */
+.works-main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.works-intro h1 {
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 8px;
+  color: #e5e5e7;
+}
+
+.works-intro .tagline {
+  color: #9ca3af;
+  margin-bottom: 8px;
+  max-width: 720px;
+}
+
+.works-intro p {
+  color: #9ca3af;
+  max-width: 720px;
+}
+
+/* ========== DESKTOP AREA WITH FOLDERS ========== */
+.desktop-area {
+  position: relative;
+  margin-top: 18px;
+  min-height: calc(100vh - 260px); 
+  /* fills most of the page height under the intro */
+}
+
+.folder-grid {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Folder icons */
+.folder-icon {
+  position: absolute;
+  width: 120px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  color: #e5e5e7;
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.folder-icon:hover {
+  transform: translateY(-8px) scale(1.06);
+  filter: brightness(1.1);
+}
+
+.folder-body {
+  position: relative;
+  width: 80px;
+  height: 56px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #4da5ff, #0b73ff);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.6);
+}
+
+.folder-body::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  width: 34px;
+  height: 14px;
+  border-radius: 8px 8px 2px 2px;
+  background: linear-gradient(180deg, #7fc0ff, #4da5ff);
+}
+
+.folder-label {
+  font-size: 0.8rem;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.9);
+}
+
+/* scattered positions to feel like a messy desktop */
+.folder-1 { top: 60px;  left: 90px; }
+.folder-2 { top: 140px; left: 320px; }
+.folder-3 { top: 240px; left: 130px; }
+.folder-4 { top: 200px; left: 480px; }
+.folder-5 { top: 70px;  left: 540px; }
+.folder-6 { top: 300px; left: 340px; }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 800px) {
+  .top-nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .desktop-area {
+    min-height: auto;
+  }
+
+  .folder-grid {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding-top: 12px;
+  }
+
+  .folder-icon {
+    position: static;
+  }
+}
