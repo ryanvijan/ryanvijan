@@ -1,1 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="UTF-8">
+  <title>contact – Ryan Vijan</title>
+
+  <style>
+    /* ===== RESET / BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background: #050506;
+      color: #e5e5e7;
+      line-height: 1.55;
+    }
+
+    a {
+      color: #7fb3ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+      padding-top: 64px; /* room for menu bar */
+    }
+
+    /* ===== macOS MENU BAR ===== */
+    .menu-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 24px;
+      padding: 0 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 300;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      color: #f5f5f5;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .menu-left,
+    .menu-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .apple-logo {
+      font-size: 14px;
+      margin-right: 6px;
+    }
+
+    .menu-item {
+      opacity: 0.9;
+    }
+
+    .menu-right .icon {
+      font-size: 13px;
+    }
+
+    .battery {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .battery-icon {
+      width: 22px;
+      height: 10px;
+      border-radius: 2px;
+      border: 1px solid currentColor;
+      position: relative;
+    }
+
+    .battery-icon::after {
+      content: "";
+      position: absolute;
+      right: -3px;
+      top: 2px;
+      width: 3px;
+      height: 6px;
+      border-radius: 1px;
+      background: currentColor;
+    }
+
+    .battery-level {
+      position: absolute;
+      inset: 1px;
+      border-radius: 1px;
+      background: currentColor;
+    }
+
+    /* ===== TOP NAV ===== */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+      font-size: 0.9rem;
+      gap: 24px;
+    }
+
+    .top-nav .logo {
+      max-width: 60%;
+      color: #9ca3af;
+    }
+
+    .top-nav nav a {
+      margin-left: 14px;
+      text-transform: lowercase;
+      color: #a3a3b0;
+    }
+
+    .top-nav nav a.active {
+      color: #ffffff;
+      font-weight: 400;
+    }
+
+    /* ===== CONTACT LAYOUT ===== */
+    .contact-main {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      align-items: flex-start;  /* left-aligned like other pages */
+    }
+
+    .contact-intro {
+      width: 100%;
+      max-width: 720px;
+    }
+
+    .contact-intro h1 {
+      font-size: 2rem;
+      font-weight: 300;
+      margin-bottom: 8px;
+    }
+
+    .contact-intro p {
+      color: #9ca3af;
+      max-width: 640px;
+    }
+
+    /* ===== VIDEO CARD ===== */
+    .video-card {
+      width: 100%;
+      max-width: 720px;
+      border-radius: 18px;
+      background: radial-gradient(circle at top left, #1f2937, #050506);
+      padding: 18px 18px 24px;
+      box-shadow: 0 26px 60px rgba(0, 0, 0, 0.8);
+      border: 1px solid #27272f;
+    }
+
+    .video-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #6b7280;
+      margin-bottom: 10px;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .contact-video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ===== TYPEWRITER BLOCK ===== */
+    .contact-details {
+      margin-top: 24px;
+      max-width: 720px;
+      width: 100%;
+    }
+
+    .typewriter {
+      font-size: 0.95rem;
+      color: #e5e5e7;
+      line-height: 1.7;
+      border-left: 1px solid #4b5563;
+      padding-left: 12px;
+      padding-top: 4px;
+      padding-bottom: 4px;
+      min-height: 3em;
+      white-space: pre-wrap; /* keep line breaks */
+    }
+
+    .typewriter::after {
+      content: "";
+      display: inline-block;
+      width: 8px;
+      height: 1em;
+      margin-left: 2px;
+      background: #e5e5e7;
+      animation: cursor-blink 0.8s steps(2, start) infinite;
+      vertical-align: bottom;
+    }
+
+    @keyframes cursor-blink {
+      0%, 50% { opacity: 1; }
+      50.01%, 100% { opacity: 0; }
+    }
+
+    @media (max-width: 800px) {
+      .top-nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .top-nav .logo {
+        max-width: 100%;
+      }
+
+      .video-card {
+        padding: 14px 14px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- mac menu bar -->
+  <div class="menu-bar">
+    <div class="menu-left">
+      <span class="apple-logo"></span>
+      <span class="menu-item">Ryan</span>
+      <span class="menu-item">File</span>
+      <span class="menu-item">Edit</span>
+      <span class="menu-item">View</span>
+      <span class="menu-item">Go</span>
+      <span class="menu-item">Window</span>
+      <span class="menu-item">Help</span>
+    </div>
+    <div class="menu-right">
+      <span class="icon menu-item">🔊</span>
+      <span class="icon menu-item">📶</span>
+      <span class="battery menu-item">
+        <span class="battery-icon">
+          <span class="battery-level"></span>
+        </span>
+        100%
+      </span>
+      <span id="menu-date-time" class="menu-item"></span>
+    </div>
+  </div>
+
+  <div class="page">
+        <header class="top-nav">
+      <div class="logo">
+         Knock, and it shall be opened unto you...
+      </div>
+      <nav>
+        <a href="index.html">home</a>
+        <a href="work(s).html" class="active">work(s)</a>
+        <a href="projects.html">mantra</a>
+        <a href="contact.html">contact</a>
+      </nav>
+    </header>
+
+
+    <main class="contact-main">
+      <section class="contact-intro">
+        <h1>contact</h1>
+
+      <section class="contact-details">
+        <div id="typewriter" class="typewriter"></div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // ===== clock in menu bar =====
+    function updateMenuTime() {
+      var el = document.getElementById('menu-date-time');
+      if (!el) return;
+      var now = new Date();
+      var options = {
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit'
+      };
+      var formatted = now.toLocaleString(undefined, options);
+      el.textContent = formatted;
+    }
+
+    updateMenuTime();
+    setInterval(updateMenuTime, 1000);
+
+    // ===== TYPEWRITER + EASTER EGG =====
+    document.addEventListener("DOMContentLoaded", function () {
+      const baseText =
+        "say hi!\n" +
+        "I check these pretty often...and stranger danger doesn’t really exist in my life. " +
+        "Tell me who you are and whatever’s on your mind!\n\n" +
+        "Email: ryanvijan@yahoo.ca\n" +
+        "LinkedIn: linkedin.com/in/ryanvijan\n"+
+        "Instagram: instagram.com/ryan.vijan";
+
+      const typewriterEl = document.getElementById("typewriter");
+      const speed = 35; // ms per character
+      let index = 0;
+      let easterStarted = false;
+
+      // Type the main message
+      function typeBase() {
+        if (!typewriterEl) return;
+
+        if (index <= baseText.length) {
+          const current = baseText.slice(0, index);
+          typewriterEl.innerHTML = current.replace(/\n/g, "<br>");
+          index++;
+          setTimeout(typeBase, speed);
+        } else {
+          // After typing finishes, turn raw text into clickable links
+          let html = typewriterEl.innerHTML;
+          html = html.replace(
+            "ryanvijan@yahoo.ca",
+            '<a href="mailto:ryanvijan@yahoo.ca">ryanvijan@yahoo.ca</a>'
+          );
+          html = html.replace(
+            "linkedin.com/in/ryanvijan",
+            '<a href="https://www.linkedin.com/in/ryanvijan/" target="_blank">linkedin.com/in/ryanvijan</a>'
+          );
+           html = html.replace(
+            "instagram.com/ryan.vijan",
+            '<a href="https://www.instagram.com/ryan.vijan/" target="_blank">instagram.com/ryan.vijan</a>'
+          );
+          typewriterEl.innerHTML = html;
+        }
+      }
+
+      function startEasterEgg() {
+        if (!typewriterEl || easterStarted) return;
+        easterStarted = true;
+
+        const messages = [
+          "god loves you.",
+          "you will achieve great things.",
+          "remember why youre doing what you do.",
+          "i wish you all the best."
+        ];
+
+        const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+
+        const header = "\n\nsince ur still here, i should say one thing...";
+        const affirmation = "\n" + randomMessage;
+
+        // snapshot whatever is currently displayed (base text w/ links)
+        const baseHTML = typewriterEl.innerHTML;
+
+        // type the header first
+        let hi = 0;
+
+        function typeHeader() {
+          if (hi <= header.length) {
+            const headerPart = header.slice(0, hi);
+            typewriterEl.innerHTML =
+              baseHTML + headerPart.replace(/\n/g, "<br>");
+            hi++;
+            setTimeout(typeHeader, speed);
+          } else {
+            // After header done, wait 3 seconds, then type affirmation
+            setTimeout(typeAffirmation, 3000);
+          }
+        }
+
+        function typeAffirmation() {
+          const basePlusHeaderHTML = typewriterEl.innerHTML; // header fully shown now
+          let ai = 0;
+
+          function stepAff() {
+            if (ai <= affirmation.length) {
+              const affPart = affirmation.slice(0, ai);
+              typewriterEl.innerHTML =
+                basePlusHeaderHTML + affPart.replace(/\n/g, "<br>");
+              ai++;
+              setTimeout(stepAff, speed);
+            }
+          }
+
+          stepAff();
+        }
+
+        typeHeader();
+      }
+
+      // start main text
+      typeBase();
+
+      // trigger easter egg after 30s on this page
+      setTimeout(startEasterEgg, 30000);
+    });
+  </script>
+</body>
+</html>
 
