@@ -1,1 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>mantra – Ryan Vijan</title>
+  <!-- this link is harmless even if assets/css/style.css isn't used -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+<style>
+  /* ===== RESET / BASE ===== */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #050506;          /* dark background */
+    color: #e5e5e7;                /* main text */
+    line-height: 1.55;
+  }
+
+  a {
+    color: #7fb3ff;                /* same blue as home */
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .page {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+    padding-top: 64px;             /* room for menu bar */
+  }
+
+  /* ===== macOS MENU BAR (dark) ===== */
+  .menu-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 24px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 300;
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    color: #f5f5f5;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .menu-left,
+  .menu-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .apple-logo {
+    font-size: 14px;
+    margin-right: 6px;
+  }
+
+  .menu-item {
+    opacity: 0.9;
+  }
+
+  .menu-right .icon {
+    font-size: 13px;
+  }
+
+  .battery {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .battery-icon {
+    width: 22px;
+    height: 10px;
+    border-radius: 2px;
+    border: 1px solid currentColor;
+    position: relative;
+  }
+
+  .battery-icon::after {
+    content: "";
+    position: absolute;
+    right: -3px;
+    top: 2px;
+    width: 3px;
+    height: 6px;
+    border-radius: 1px;
+    background: currentColor;
+  }
+
+  .battery-level {
+    position: absolute;
+    inset: 1px;
+    border-radius: 1px;
+    background: currentColor;
+  }
+
+  /* ===== TOP NAV ===== */
+  .top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    font-size: 0.9rem;
+    gap: 24px;
+  }
+
+  .top-nav .logo {
+    max-width: 60%;
+    color: #9ca3af;              /* muted grey like home tagline */
+  }
+
+  .top-nav nav a {
+    margin-left: 14px;
+    text-transform: lowercase;
+    color: #a3a3b0;
+  }
+
+  .top-nav nav a.active {
+    color: #ffffff;
+    font-weight: 400;
+  }
+
+  /* ===== MANTRA LAYOUT ===== */
+  .mantra-main {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .mantra-intro h1 {
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 8px;
+    color: #e5e5e7;
+  }
+
+  .mantra-intro .tagline {
+    color: #9ca3af;
+    margin-bottom: 10px;
+    max-width: 720px;
+  }
+
+  .mantra-intro p {
+    max-width: 720px;
+    margin-bottom: 10px;
+  }
+
+  /* ===== TREE DIAGRAM ===== */
+  .tree-wrapper {
+    margin-top: 8px;
+    padding: 20px 16px;
+    border-radius: 12px;
+    background: #101018;          /* card on dark bg */
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
+    border: 1px solid #27272f;
+  }
+
+  .tree-root-title {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #6b7280;
+    margin-bottom: 12px;
+  }
+
+  .tree {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .tree ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  /* vertical trunk */
+  .tree ul::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 7px;
+    width: 1px;
+    height: 100%;
+    background: #27272f;
+  }
+
+  .tree li {
+    position: relative;
+    padding-left: 16px;
+    margin: 4px 0;
+  }
+
+  /* horizontal branch */
+  .tree li::before {
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 7px;
+    width: 10px;
+    height: 1px;
+    background: #27272f;
+  }
+
+  .tree-node {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 6px;
+    border-radius: 6px;
+  }
+
+  .tree-node.category {
+    font-weight: 400;
+    color: #e5e5e7;
+  }
+
+  .category-label {
+    font-weight: 400;
+  }
+
+  /* small folder icon for Category 1–4 */
+  .folder-small {
+    width: 16px;
+    height: 12px;
+    border-radius: 3px;
+    background: linear-gradient(180deg, #4da5ff, #0b73ff);
+    position: relative;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  }
+
+  .folder-small::before {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: 2px;
+    width: 9px;
+    height: 4px;
+    border-radius: 2px 2px 1px 1px;
+    background: linear-gradient(180deg, #7fc0ff, #4da5ff);
+  }
+
+  /* file nodes (actual links) */
+  .file-node {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #e5e5e7;
+    transition: background 0.16s ease, transform 0.12s ease, box-shadow 0.12s ease;
+  }
+
+  .file-node:hover {
+    background: #1b2638;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7);
+  }
+
+  .file-icon {
+    width: 13px;
+    height: 16px;
+    border-radius: 2px;
+    background: #050506;
+    border: 1px solid #3b4a7a;
+    position: relative;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  }
+
+  .file-icon::before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: 4px;
+    width: 8px;
+    height: 6px;
+    background: #050506;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-left: 1px solid #3b4a7a;
+    border-top: 1px solid #3b4a7a;
+    border-right: 1px solid #3b4a7a;
+    transform: skewX(-18deg);
+  }
+
+  .file-label {
+    white-space: nowrap;
+  }
+
+  /* Responsive */
+  @media (max-width: 800px) {
+    .top-nav {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .top-nav .logo {
+      max-width: 100%;
+    }
+
+    .tree-wrapper {
+      padding: 16px 12px;
+    }
+
+    .tree ul {
+      padding-left: 16px;
+    }
+  }
+</style>
+
+</head>
+<body>
+  <!-- mac menu bar -->
+  <div class="menu-bar">
+    <div class="menu-left">
+      <span class="apple-logo"></span>
+      <span class="menu-item">Ryan</span>
+      <span class="menu-item">File</span>
+      <span class="menu-item">Edit</span>
+      <span class="menu-item">View</span>
+      <span class="menu-item">Go</span>
+      <span class="menu-item">Window</span>
+      <span class="menu-item">Help</span>
+    </div>
+    <div class="menu-right">
+      <span class="icon menu-item">🔊</span>
+      <span class="icon menu-item">📶</span>
+      <span class="battery menu-item">
+        <span class="battery-icon">
+          <span class="battery-level"></span>
+        </span>
+        100%
+      </span>
+      <span id="menu-date-time" class="menu-item"></span>
+    </div>
+  </div>
+  <div class="page">
+    <header class="top-nav">
+      <div class="logo">
+        Ask, and it shall be given you...
+      </div>
+      <nav>
+        <a href="index.html">home</a>
+        <a href="work(s).html" class="active">work(s)</a>
+        <a href="projects.html">mantra</a>
+        <a href="contact.html">contact</a>
+      </nav>
+    </header>
+
+    <main class="mantra-main">
+      <section class="mantra-intro">
+        <h1>mantra</h1>
+        <p class="tagline">
+          A growing archive of videos, articles, and ideas that feel like “me” — the mental OS behind how I think, learn, and move.
+        </p>
+        <p>
+          Each category is a folder of influences. Inside are subcomponents, and inside those: specific pieces (videos, essays, conversations) that I’ll link as I go. For now, the structure is here — the contents will fill in over time.
+        </p>
+      </section>
+
+      <section class="tree-wrapper">
+        <div class="tree-root-title">/mantra</div>
+
+        <div class="tree">
+          <ul>
+            <!-- CATEGORY 1 -->
+            <li>
+              <div class="tree-node category">
+                <span class="folder-small"></span>
+                <span class="category-label">Category 1</span>
+              </div>
+              <ul>
+                <li>
+                  <div class="tree-node">
+                    <span>Subcomponent 1.1</span>
+                  </div>
+                  <ul>
+                    <li>
+                      <a href="#" class="file-node">
+                        <span class="file-icon"></span>
+                        <span class="file-label">Video – placeholder link</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" class="file-node">
+                        <span class="file-icon"></span>
+                        <span class="file-label">Article – placeholder link</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <div class="tree-node">
+                    <span>Subcomponent 1.2</span>
+                  </div>
+                  <ul>
+                    <li>
+                      <a href="#" class="file-node">
+                        <span class="file-icon"></span>
+                        <span class="file-label">Clip / quote</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <!-- CATEGORY 2 -->
+            <li>
+              <div class="tree-node category">
+                <span class="folder-small"></span>
+                <span class="category-label">Category 2</span>
+              </div>
+              <ul>
+                <li>
+                  <div class="tree-node">
+                    <span>Subcomponent 2.1</span>
+                  </div>
+                  <ul>
+                    <li>
+                      <a href="#" class="file-node">
+                        <span class="file-icon"></span>
+                        <span class="file-label">Podcast episode</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <div class="tree-node">
+                    <span>Subcomponent 2.2</span>
+                  </div>
+                  <ul>
+                    <li>
+                      <a href="#" class="file-node">
+                        <span class="file-icon"></span>
+                        <span class="file-label">Long-form article</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <!-- CATEGORY 3 -->
+            <li>
+              <div class="tree-node category">
+                <span class="folder-small"></span>
+                <span class="category-label">Category 3</span>
+              </div>
+              <ul>
+                <li>
+                  <div class="tree-node">
+                    <span>Subcomponent 3.1</span>
+                  </div>
+                  <ul>
+                    <li>
+                      <a href="#" class="file-node">
+                        <span class="file-icon"></span>
+                        <span class="file-label">Book highlight</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <div class="tree-node">
+                    <span>Subcomponent 3.2</span>
+                  </div>
+                  <ul>
+                    <li>
+                      <a href="#" class="file-node">
+                        <span class="file-icon"></span>
+                        <span class="file-label">Conversation notes</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <!-- CATEGORY 4 -->
+            <li>
+              <div class="tree-node category">
+                <span class="folder-small"></span>
+                <span class="category-label">Category 4</span>
+              </div>
+              <ul>
+                <li>
+                  <div class="tree-node">
+                    <span>Subcomponent 4.1</span>
+                  </div>
+                  <ul>
+                    <li>
+                      <a href="#" class="file-node">
+                        <span class="file-icon"></span>
+                        <span class="file-label">Video / talk</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <div class="tree-node">
+                    <span>Subcomponent 4.2</span>
+                  </div>
+                  <ul>
+                    <li>
+                      <a href="#" class="file-node">
+                        <span class="file-icon"></span>
+                        <span class="file-label">Essay / thread</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    function updateMenuTime() {
+      var el = document.getElementById('menu-date-time');
+      if (!el) return;
+      var now = new Date();
+      var options = {
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit'
+      };
+      var formatted = now.toLocaleString(undefined, options);
+      el.textContent = formatted;
+    }
+
+    updateMenuTime();
+    setInterval(updateMenuTime, 1000);
+  </script>
+</body>
+</html>
 
