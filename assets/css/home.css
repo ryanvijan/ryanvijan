@@ -261,41 +261,53 @@ body.dark .menu-bar {
 body.dark, body.dark .page {
   background: #050506 !important;
   color: #e5e5e7 !important;
+/* ===== SIDE AD BANNER ===== */
+
 .ad-banner {
-  position: absolute;        /* relative to .page */
-  top: 180px;                /* vertical placement – tweak if needed */
-  left: 40px;                /* sits in the left gutter */
+  position: absolute;           /* stays in the left gutter */
+  top: 180px;                   /* adjust for vertical position */
+  left: -280px;                 /* slightly off-screen to slide in */
   width: 260px;
-  padding: 10px 12px;
+  padding: 12px 14px 14px;
   border-radius: 14px;
-  background: rgba(15, 23, 42, 0.96);
+  background: rgba(20, 20, 25, 0.95);
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.85);
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  display: none;             /* JS will flip this to block */
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: none;                /* hidden by default */
   z-index: 900;
+  opacity: 0;
+  transform: translateX(0);
+  transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
-/* image inside the ad */
+/* Show the ad */
+.ad-banner.ad-visible {
+  display: block;
+  opacity: 1;
+  transform: translateX(280px); /* slides fully into view */
+}
+
 .ad-banner img {
   width: 100%;
+  height: auto;
   display: block;
   border-radius: 10px;
 }
 
-/* close button */
+/* Close button */
 .ad-close {
   position: absolute;
   top: 6px;
   right: 8px;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 500;
   color: #e5e5e7;
+  background: transparent;
+  border: none;
   cursor: pointer;
-  line-height: 1;
-}
-.page {
-  max-width: 1150px;
-  margin: 0 auto;
-  padding: 32px 20px 80px;
-  position: relative;        /* 👈 add this */
+  transition: 0.2s ease;
 }
 
+.ad-close:hover {
+  color: #ff8787;
+}
