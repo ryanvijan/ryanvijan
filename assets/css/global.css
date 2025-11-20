@@ -1,3 +1,20 @@
+/* ===== TOP NAV LINK COLORS (shared) ===== */
+.top-nav nav a {
+  margin-left: 14px;
+  text-transform: lowercase;
+  color: #a3a3b0;        /* grey for inactive */
+  font-weight: 300;
+  transition: color 0.15s ease;
+}
+
+.top-nav nav a:hover {
+  color: #ffffff;
+}
+
+.top-nav nav a.active {
+  color: #7fb3ff;       /* BLUE highlight */
+  font-weight: 400;
+}
 /* ========== RESET & THEME VARIABLES ========== */
 * {
   margin: 0;
