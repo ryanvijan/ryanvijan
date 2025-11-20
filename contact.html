@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="assets/css/global.css">
-<link rel="stylesheet" href="assets/css/contact.css">
-<body class="dark">
   <meta charset="UTF-8">
   <title>contact – Ryan Vijan</title>
+
+  <!-- shared + page-specific CSS -->
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/contact.css">
 
   <style>
     /* ===== RESET / BASE ===== */
@@ -135,8 +136,9 @@
       color: #a3a3b0;
     }
 
+    /* make active link BLUE on this page */
     .top-nav nav a.active {
-      color: #ffffff;
+      color: #7fb3ff;
       font-weight: 400;
     }
 
@@ -145,7 +147,7 @@
       display: flex;
       flex-direction: column;
       gap: 32px;
-      align-items: flex-start;  /* left-aligned like other pages */
+      align-items: flex-start;
     }
 
     .contact-intro {
@@ -162,40 +164,6 @@
     .contact-intro p {
       color: #9ca3af;
       max-width: 640px;
-    }
-
-    /* ===== VIDEO CARD ===== */
-    .video-card {
-      width: 100%;
-      max-width: 720px;
-      border-radius: 18px;
-      background: radial-gradient(circle at top left, #1f2937, #050506);
-      padding: 18px 18px 24px;
-      box-shadow: 0 26px 60px rgba(0, 0, 0, 0.8);
-      border: 1px solid #27272f;
-    }
-
-    .video-label {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #6b7280;
-      margin-bottom: 10px;
-    }
-
-    .video-wrapper {
-      position: relative;
-      width: 100%;
-      border-radius: 14px;
-      overflow: hidden;
-      background: #000;
-    }
-
-    .contact-video {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
     }
 
     /* ===== TYPEWRITER BLOCK ===== */
@@ -242,14 +210,11 @@
       .top-nav .logo {
         max-width: 100%;
       }
-
-      .video-card {
-        padding: 14px 14px 20px;
-      }
     }
   </style>
 </head>
-<body>
+
+<body class="dark">
   <!-- mac menu bar -->
   <div class="menu-bar">
     <div class="menu-left">
@@ -276,20 +241,22 @@
   </div>
 
   <div class="page">
-       <header class="top-nav">
-  <div class="logo">
-    Ask, and it shall be given you...
-  </div>
-  <nav>
-    <a href="index.html">home</a>
-    <a href="work(s).html">work(s)</a>
-    <a href="mantra.html">mantra</a>
-    <a href="contact.html" class="active">contact</a>
-  </nav>
-</header>
+    <header class="top-nav">
+      <div class="logo">
+        Ask, and it shall be given you...
+      </div>
+      <nav>
+        <a href="index.html">home</a>
+        <a href="work(s).html">work(s)</a>
+        <a href="mantra.html">mantra</a>
+        <a href="contact.html" class="active">contact</a>
+      </nav>
+    </header>
+
     <main class="contact-main">
       <section class="contact-intro">
         <h1>contact</h1>
+      </section>
 
       <section class="contact-details">
         <div id="typewriter" class="typewriter"></div>
@@ -324,7 +291,7 @@
         "I check these pretty often...and stranger danger doesn’t really exist in my life. " +
         "Tell me who you are and whatever’s on your mind!\n\n" +
         "Email: ryanvijan@yahoo.ca\n" +
-        "LinkedIn: linkedin.com/in/ryanvijan\n"+
+        "LinkedIn: linkedin.com/in/ryanvijan\n" +
         "Instagram: instagram.com/ryan.vijan";
 
       const typewriterEl = document.getElementById("typewriter");
@@ -352,7 +319,7 @@
             "linkedin.com/in/ryanvijan",
             '<a href="https://www.linkedin.com/in/ryanvijan/" target="_blank">linkedin.com/in/ryanvijan</a>'
           );
-           html = html.replace(
+          html = html.replace(
             "instagram.com/ryan.vijan",
             '<a href="https://www.instagram.com/ryan.vijan/" target="_blank">instagram.com/ryan.vijan</a>'
           );
@@ -424,4 +391,5 @@
   </script>
 </body>
 </html>
+
 
