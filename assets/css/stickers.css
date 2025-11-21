@@ -1,58 +1,59 @@
-/* ===== DRAGGABLE STICKERS ===== */
+/* ===== DRAGGABLE STICKERS (HOME) ===== */
+
+/* transparent overlay over entire PAGE */
 .sticker-layer {
-  position: fixed;
+  position: absolute;   /* was fixed */
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
+  width: 100%;
+  height: 100%;         /* full height of .page */
+  pointer-events: none; /* layer itself doesn’t block clicks */
   z-index: 40;
 }
 
+/* base sticker style */
 .sticker {
-  position: fixed;
-  width: 170px;
-  height: auto;
-  pointer-events: auto;
+  position: absolute;   /* was fixed */
+  width: 150px;         /* desktop size – tweak to resize */
   cursor: grab;
+  pointer-events: auto; /* allow clicking/dragging */
   user-select: none;
   transform-origin: center center;
-  transition: transform 0.12s ease;
-  z-index: 50;
 }
 
-.sticker:active {
-  cursor: grabbing;
-  transform: scale(1.08);
-}
-
-/* Desktop spawn locations */
+/* starting positions in that right-hand gap */
 #sticker1 {
-  top: 230px;
-  right: 120px;
+  top: 210px;
+  right: 70px;
   transform: rotate(-4deg);
 }
 
 #sticker2 {
-  top: 400px;
-  right: 60px;
+  top: 380px;
+  right: 120px;
   transform: rotate(3deg);
 }
 
 #sticker3 {
-  top: 570px;
+  top: 550px;
   right: 90px;
   transform: rotate(-6deg);
 }
 
-/* Scale + reposition for small screens */
+/* drag state */
+.sticker:active {
+  cursor: grabbing;
+}
+
+/* Smaller on narrow screens */
 @media (max-width: 900px) {
   .sticker {
-    width: 110px;
+    width: 95px;
   }
-  #sticker1 { top: 350px; right: 20px; }
-  #sticker2 { top: 500px; right: 40px; }
-  #sticker3 { top: 650px; right: 10px; }
+
+  #sticker1 { top: 260px; right: 20px; }
+  #sticker2 { top: 410px; right: 30px; }
+  #sticker3 { top: 560px; right: 25px; }
 }
 .page {
   max-width: 1150px;
