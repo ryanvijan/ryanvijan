@@ -261,55 +261,27 @@ body.dark .menu-bar {
 body.dark, body.dark .page {
   background: #050506 !important;
   color: #e5e5e7 !important;
-  /* ===== DRAGGABLE STICKERS ON HOME ===== */
-.draggable-sticker {
-  position: fixed;          /* stick to viewport */
-  z-index: 50;
-  width: 140px;             /* adjust size here */
-  cursor: grab;
-  user-select: none;
-  pointer-events: auto;
-}
 
-/* Hide on smaller screens so it doesn't crowd mobile */
-@media (max-width: 900px) {
-  .draggable-sticker {
-    display: none;
-  }
-}
-/* ===== STICKER LAYER (HOME PAGE) ===== */
-.page {
-  position: relative; /* so stickers can be positioned inside */
-}
-
+/* ===== STICKER LAYER ===== */
 .sticker-layer {
   position: absolute;
-  top: 160px;         /* vertical start */
-  right: 80px;        /* distance from right edge */
-  width: 260px;       /* area they live in */
-  height: 480px;
-  pointer-events: none; /* let only stickers catch clicks */
+  top: 140px;     /* adjust as needed */
+  right: 0;
+  width: 280px;   /* controls right column width */
+  height: calc(100vh - 200px);
+  pointer-events: none; /* allow text interaction */
 }
 
-/* each sticker */
+/* STICKERS */
 .sticker {
+  width: 140px;    /* adjust size */
   position: absolute;
-  width: 120px;          /* control size here */
-  max-width: 100%;
   cursor: grab;
-  pointer-events: auto;
-  user-select: none;
+  pointer-events: auto; /* allow dragging */
+  transition: transform 0.1s ease;
 }
 
-/* starting positions so they don't overlap too badly */
-.sticker-1 { top: 0;   left: 40px; }
-.sticker-2 { top: 150px; left: 10px; }
-.sticker-3 { top: 300px; left: 80px; }
-
-@media (max-width: 900px) {
-  /* hide stickers on small screens so they don't crush the text */
-  .sticker-layer {
-    display: none;
-  }
+.sticker:active {
+  cursor: grabbing;
+  transform: scale(1.05);
 }
-
