@@ -1,47 +1,49 @@
 /* ===== DRAGGABLE STICKERS (HOME) ===== */
 
-/* Stickers move with scrolling */
 .sticker {
   position: absolute;
-  width: 180px;         /* adjust size here */
+  width: 180px;
   cursor: grab;
   user-select: none;
   pointer-events: auto;
   transform-origin: center;
 }
 
-/* Hover & drag feedback */
 .sticker:hover {
   filter: brightness(1.1);
 }
+
 .sticker:active {
   cursor: grabbing;
   transform: scale(1.06);
 }
 
-/* 📌 Staggered “desktop-style scatter” positions */
+/* staggered positions + tilt */
 #sticker1 {
   top: 210px;
   right: 40px;
   transform: rotate(-4deg);
 }
+
 #sticker2 {
   top: 400px;
   right: 90px;
   transform: rotate(6deg);
 }
+
 #sticker3 {
   top: 580px;
   right: 20px;
   transform: rotate(-8deg);
 }
 
-/* Scale ↓ on small screens */
+/* scale down on smaller screens */
 @media (max-width: 900px) {
   .sticker {
     width: 130px;
   }
 }
+
 @media (max-width: 650px) {
   .sticker {
     width: 100px;
