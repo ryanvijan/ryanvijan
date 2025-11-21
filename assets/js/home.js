@@ -17,60 +17,49 @@ document.querySelector(".popup-close")?.addEventListener("click", () => {
 document.addEventListener("DOMContentLoaded", function () {
   const stickers = document.querySelectorAll(".draggable-sticker");
 
-  // Give each sticker a random starting spot in the right side of the screen
-  function placeStickers() {
-    stickers.forEach(sticker => {
-      const padding = 40;
-      const rightStart = window.innerWidth * 0.6;     // 60% from left = right zone
-      const rightEnd   = window.innerWidth * 0.95;    // leave a bit of margin
+// DRAGGABLE STICKERS
+document.addEventListener('DOMContentLoaded', function () {
+  const stickers = document.querySelectorAll('.sticker');
+  const page = document.querySelector('.page');
 
-      const left = Math.min(
-        rightEnd - sticker.offsetWidth - padding,
-        rightStart + Math.random() * (rightEnd - rightStart - sticker.offsetWidth)
-      );
+  if (!page || !stickers.length) return;
 
-      const topMin = 160;                             // below the menu bar
-      const topMax = window.innerHeight - sticker.offsetHeight - padding;
-      const top = topMin + Math.random() * Math.max(40, topMax - topMin);
-
-      sticker.style.left = left + "px";
-      sticker.style.top = top + "px";
-    });
-  }
-
-  placeStickers();
-  window.addEventListener("resize", placeStickers);
-
-  // Drag logic
-  let current = null;
+  let active = null;
   let offsetX = 0;
   let offsetY = 0;
 
-  function onMouseDown(e) {
-    current = e.target;
-    const rect = current.getBoundingClientRect();
-    offsetX = e.clientX - rect.left;
-    offsetY = e.clientY - rect.top;
-    current.style.cursor = "grabbing";
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseup", onMouseUp);
-  }
-
-  function onMouseMove(e) {
-    if (!current) return;
-    current.style.left = e.clientX - offsetX + "px";
-    current.style.top = e.clientY - offsetY + "px";
-  }
-
-  function onMouseUp() {
-    if (!current) return;
-    current.style.cursor = "grab";
-    current = null;
-    document.removeEventListener("mousemove", onMouseMove);
-    document.removeEventListener("mouseup", onMouseUp);
-  }
-
   stickers.forEach(sticker => {
-    sticker.addEventListener("mousedown", onMouseDown);
+    sticker.addEventListener('mousedown', (e) => {
+      active = sticker;
+      const rect = sticker.getBoundingClientRect();
+      const pageRect = page.getBoundingClientRect();
+
+      offsetX = e.clientX - rect.left;
+      offsetY = e.clientY - rect.top;
+
+      sticker.style.position = 'absolute';
+      sticker.style.cursor = 'grabbing';
+      sticker.style.zIndex = 999;
+
+      e.preventDefault();
+    });
+  });
+
+  document.addEventListener('mousemove', (e) => {
+    if (!active) return;
+
+    const pageRect = page.getBoundingClientRect();
+    const x = e.clientX - offsetX - pageRect.left;
+    const y = e.clientY - offsetY - pageRect.top;
+
+    active.style.left = x + 'px';
+    active.style.top = y + 'px';
+  });
+
+  document.addEventListener('mouseup', () => {
+    if (active) {
+      active.style.cursor = 'grab';
+    }
+    active = null;
   });
 });
