@@ -1,0 +1,56 @@
+/* ===== DRAGGABLE STICKERS ===== */
+.sticker-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 40;
+}
+
+.sticker {
+  position: fixed;
+  width: 170px;
+  height: auto;
+  pointer-events: auto;
+  cursor: grab;
+  user-select: none;
+  transform-origin: center center;
+  transition: transform 0.12s ease;
+  z-index: 50;
+}
+
+.sticker:active {
+  cursor: grabbing;
+  transform: scale(1.08);
+}
+
+/* Desktop spawn locations */
+#sticker1 {
+  top: 230px;
+  right: 120px;
+  transform: rotate(-4deg);
+}
+
+#sticker2 {
+  top: 400px;
+  right: 60px;
+  transform: rotate(3deg);
+}
+
+#sticker3 {
+  top: 570px;
+  right: 90px;
+  transform: rotate(-6deg);
+}
+
+/* Scale + reposition for small screens */
+@media (max-width: 900px) {
+  .sticker {
+    width: 110px;
+  }
+  #sticker1 { top: 350px; right: 20px; }
+  #sticker2 { top: 500px; right: 40px; }
+  #sticker3 { top: 650px; right: 10px; }
+}
