@@ -1,56 +1,49 @@
-/* ===== DRAGGABLE STICKERS ===== */
-.sticker-layer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: auto;
-  pointer-events: none;
-  z-index: 20;
-}
+/* ===== DRAGGABLE STICKERS (HOME) ===== */
 
-/* Base sticker style */
+/* Stickers move with scrolling */
 .sticker {
-  width: 200px; /* Adjust if needed */
   position: absolute;
+  width: 180px;         /* adjust size here */
   cursor: grab;
-  pointer-events: auto;
   user-select: none;
-  transform-origin: center center;
+  pointer-events: auto;
+  transform-origin: center;
 }
 
-/* Natural draggable feedback */
+/* Hover & drag feedback */
+.sticker:hover {
+  filter: brightness(1.1);
+}
 .sticker:active {
   cursor: grabbing;
-  transform: scale(1.04);
+  transform: scale(1.06);
 }
 
-/* === STARTING POSITIONS (optimized for new images) === */
+/* 📌 Staggered “desktop-style scatter” positions */
 #sticker1 {
   top: 210px;
   right: 40px;
-  transform: rotate(-6deg);
+  transform: rotate(-4deg);
 }
-
 #sticker2 {
-  top: 380px;
-  right: 85px;
-  transform: rotate(4deg);
+  top: 400px;
+  right: 90px;
+  transform: rotate(6deg);
 }
-
 #sticker3 {
-  top: 550px;
-  right: 55px;
+  top: 580px;
+  right: 20px;
   transform: rotate(-8deg);
 }
 
-/* Mobile-safe preserving */
+/* Scale ↓ on small screens */
 @media (max-width: 900px) {
   .sticker {
-    width: 140px;
-    position: fixed; /* prevents scrolling issues */
+    width: 130px;
   }
-  #sticker1 { top: 160px; right: 20px; }
-  #sticker2 { top: 300px; right: 40px; }
-  #sticker3 { top: 430px; right: 25px; }
+}
+@media (max-width: 650px) {
+  .sticker {
+    width: 100px;
+  }
 }
