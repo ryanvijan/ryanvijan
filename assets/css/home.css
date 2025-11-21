@@ -274,11 +274,10 @@ body.dark, body.dark .page {
 }
 
 .sticker {
-  width: 120px; /* adjust sticker size */
+  width: 120px;
   position: absolute;
-  right: 10px;
   cursor: grab;
-  pointer-events: auto; /* allow clicking to drag */
+  pointer-events: auto;
   user-select: none;
   transition: transform 0.12s ease;
 }
