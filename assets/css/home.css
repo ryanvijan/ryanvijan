@@ -289,6 +289,6 @@ body.dark, body.dark .page {
 }
 
 /* Default starting positions */
-#sticker1 { top: 0px; }
-#sticker2 { top: 130px; }
-#sticker3 { top: 260px; }
+#sticker1 { top: 200px; right: 40px; }
+#sticker2 { top: 350px; right: 90px; }
+#sticker3 { top: 500px; right: 60px; }
