@@ -262,28 +262,35 @@ body.dark, body.dark .page {
   background: #050506 !important;
   color: #e5e5e7 !important;
 
-/* ===== STICKERS (draggable) ===== */
+/* ===== DRAGGABLE STICKERS (HOME) ===== */
+
+/* overlay over whole screen so stickers float above layout */
+.sticker-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;   /* layer itself doesn’t block clicks */
+  z-index: 40;
+}
+
+/* base sticker style */
 .sticker {
-  width: 160px;        /* bigger size */
-  max-width: 28vw;     /* scale smaller on smaller screens */
-  position: absolute;
-  right: 20px;         /* base right offset */
+  position: fixed;
+  width: 180px;           /* <— change this to make them bigger/smaller */
+  max-width: 28vw;        /* scales down a bit on small screens */
   cursor: grab;
-  pointer-events: auto;
+  pointer-events: auto;   /* allow dragging */
   user-select: none;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-  z-index: 50;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.3s ease;
+  opacity: 0;
+  animation: sticker-fade-in 0.6s ease forwards;
 }
 
-.sticker:active {
-  cursor: grabbing;
-  transform: scale(1.08);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.4);
-}
-
-/* Fun staggered starting positions + rotation */
+/* fun staggered starting positions + rotation */
 #sticker1 {
-  top: 180px;
+  top: 200px;
   right: 40px;
   transform: rotate(-4deg);
 }
@@ -295,20 +302,35 @@ body.dark, body.dark .page {
 }
 
 #sticker3 {
-  top: 540px;
+  top: 520px;
   right: 60px;
   transform: rotate(-6deg);
 }
 
-/* ===== MOBILE FIXES ===== */
+/* grab state */
+.sticker:active {
+  cursor: grabbing;
+  transform: scale(1.08);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.45);
+}
+
+/* fade in animation */
+@keyframes sticker-fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+/* optional: tweak for small screens */
 @media (max-width: 900px) {
   .sticker {
-    right: 10px;
+    width: 140px;
+    right: 16px;
   }
 }
 
 @media (max-width: 700px) {
-  .sticker {
-    display: none; /* hides on very small screens to avoid overlap */
+  .sticker-layer {
+    display: none;  /* hide on very small screens */
   }
 }
