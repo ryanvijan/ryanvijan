@@ -261,3 +261,20 @@ body.dark .menu-bar {
 body.dark, body.dark .page {
   background: #050506 !important;
   color: #e5e5e7 !important;
+  /* ===== DRAGGABLE STICKERS ON HOME ===== */
+.draggable-sticker {
+  position: fixed;          /* stick to viewport */
+  z-index: 50;
+  width: 140px;             /* adjust size here */
+  cursor: grab;
+  user-select: none;
+  pointer-events: auto;
+}
+
+/* Hide on smaller screens so it doesn't crowd mobile */
+@media (max-width: 900px) {
+  .draggable-sticker {
+    display: none;
+  }
+}
+
