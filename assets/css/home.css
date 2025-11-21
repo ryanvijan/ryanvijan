@@ -262,26 +262,33 @@ body.dark, body.dark .page {
   background: #050506 !important;
   color: #e5e5e7 !important;
 
-/* ===== STICKER LAYER ===== */
+/* ==== Draggable Stickers Layout ==== */
 .sticker-layer {
   position: absolute;
-  top: 140px;     /* adjust as needed */
+  top: 150px;
   right: 0;
-  width: 280px;   /* controls right column width */
+  width: 320px; /* adjust width if needed */
   height: calc(100vh - 200px);
-  pointer-events: none; /* allow text interaction */
+  overflow: visible;
+  pointer-events: none; /* default: do not block clicks in layout */
 }
 
-/* STICKERS */
 .sticker {
-  width: 140px;    /* adjust size */
+  width: 120px; /* adjust sticker size */
   position: absolute;
+  right: 10px;
   cursor: grab;
-  pointer-events: auto; /* allow dragging */
-  transition: transform 0.1s ease;
+  pointer-events: auto; /* allow clicking to drag */
+  user-select: none;
+  transition: transform 0.12s ease;
 }
 
 .sticker:active {
   cursor: grabbing;
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
+
+/* Default starting positions */
+#sticker1 { top: 0px; }
+#sticker2 { top: 130px; }
+#sticker3 { top: 260px; }
