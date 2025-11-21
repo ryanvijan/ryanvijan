@@ -54,3 +54,10 @@
   #sticker2 { top: 500px; right: 40px; }
   #sticker3 { top: 650px; right: 10px; }
 }
+.page {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 32px 20px 80px;
+  position: relative;   /* ➜ new: so stickers are anchored to the page */
+}
+
