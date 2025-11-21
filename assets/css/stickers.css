@@ -1,67 +1,56 @@
 /* ===== DRAGGABLE STICKERS ===== */
-
-/* Sticker layer stays inside the scrollable page */
 .sticker-layer {
-  position: absolute; /* Allows scrolling with the page */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  pointer-events: none; /* Layer doesn't block clicking text */
-  z-index: 40;
+  height: auto;
+  pointer-events: none;
+  z-index: 20;
 }
 
-/* All stickers (size + drag behavior) */
+/* Base sticker style */
 .sticker {
-  position: absolute; /* Important so movement updates scroll-relative left/top */
-  width: 160px;       /* Adjust sticker size here */
+  width: 200px; /* Adjust if needed */
+  position: absolute;
   cursor: grab;
-  pointer-events: auto; /* Allow dragging */
+  pointer-events: auto;
   user-select: none;
   transform-origin: center center;
-  transition: transform 0.12s ease;
 }
 
-/* Drag active style */
+/* Natural draggable feedback */
 .sticker:active {
   cursor: grabbing;
-  transform: scale(1.07);
+  transform: scale(1.04);
 }
 
-/* Default positions + slight rotation for realism */
+/* === STARTING POSITIONS (optimized for new images) === */
 #sticker1 {
-  top: 200px;
-  right: 20px;
-  transform: rotate(-4deg);
+  top: 210px;
+  right: 40px;
+  transform: rotate(-6deg);
 }
 
 #sticker2 {
-  top: 360px;
-  right: 90px;
-  transform: rotate(3deg);
+  top: 380px;
+  right: 85px;
+  transform: rotate(4deg);
 }
 
 #sticker3 {
-  top: 520px;
-  right: 50px;
-  transform: rotate(-7deg);
+  top: 550px;
+  right: 55px;
+  transform: rotate(-8deg);
 }
 
-/* Smaller screens — scale down */
-@media (max-width: 1020px) {
+/* Mobile-safe preserving */
+@media (max-width: 900px) {
   .sticker {
-    width: 120px;
+    width: 140px;
+    position: fixed; /* prevents scrolling issues */
   }
-}
-
-@media (max-width: 800px) {
-  .sticker {
-    width: 95px;
-  }
-}
-
-@media (max-width: 600px) {
-  .sticker {
-    display: none; /* optional — too messy on small screens */
-  }
+  #sticker1 { top: 160px; right: 20px; }
+  #sticker2 { top: 300px; right: 40px; }
+  #sticker3 { top: 430px; right: 25px; }
 }
