@@ -261,6 +261,11 @@ body.dark .menu-bar {
 body.dark, body.dark .page {
   background: #050506 !important;
   color: #e5e5e7 !important;
+  body.dark,
+body.dark .page {
+  background: #050506 !important;
+  color: #e5e5e7 !important;
+}
 
 /* ===== DRAGGABLE STICKERS (HOME) ===== */
 
