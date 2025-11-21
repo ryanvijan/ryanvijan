@@ -262,32 +262,53 @@ body.dark, body.dark .page {
   background: #050506 !important;
   color: #e5e5e7 !important;
 
-/* ==== Draggable Stickers Layout ==== */
-.sticker-layer {
-  position: absolute;
-  top: 150px;
-  right: 0;
-  width: 320px; /* adjust width if needed */
-  height: calc(100vh - 200px);
-  overflow: visible;
-  pointer-events: none; /* default: do not block clicks in layout */
-}
-
+/* ===== STICKERS (draggable) ===== */
 .sticker {
-  width: 120px;
+  width: 160px;        /* bigger size */
+  max-width: 28vw;     /* scale smaller on smaller screens */
   position: absolute;
+  right: 20px;         /* base right offset */
   cursor: grab;
   pointer-events: auto;
   user-select: none;
-  transition: transform 0.12s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  z-index: 50;
 }
 
 .sticker:active {
   cursor: grabbing;
   transform: scale(1.08);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.4);
 }
 
-/* Default starting positions */
-#sticker1 { top: 200px; right: 40px; }
-#sticker2 { top: 350px; right: 90px; }
-#sticker3 { top: 500px; right: 60px; }
+/* Fun staggered starting positions + rotation */
+#sticker1 {
+  top: 180px;
+  right: 40px;
+  transform: rotate(-4deg);
+}
+
+#sticker2 {
+  top: 360px;
+  right: 90px;
+  transform: rotate(3deg);
+}
+
+#sticker3 {
+  top: 540px;
+  right: 60px;
+  transform: rotate(-6deg);
+}
+
+/* ===== MOBILE FIXES ===== */
+@media (max-width: 900px) {
+  .sticker {
+    right: 10px;
+  }
+}
+
+@media (max-width: 700px) {
+  .sticker {
+    display: none; /* hides on very small screens to avoid overlap */
+  }
+}
