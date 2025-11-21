@@ -1,8 +1,7 @@
+// Draggable stickers using viewport (fixed) positioning
 document.addEventListener("DOMContentLoaded", () => {
   const stickers = document.querySelectorAll(".sticker");
-  const layer = document.querySelector(".sticker-layer");
-
-  if (!layer || !stickers.length) return;
+  if (!stickers.length) return;
 
   let active = null;
   let offsetX = 0;
@@ -13,8 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
       active = sticker;
 
       const rect = sticker.getBoundingClientRect();
-      const layerRect = layer.getBoundingClientRect();
-
       offsetX = e.clientX - rect.left;
       offsetY = e.clientY - rect.top;
 
@@ -26,16 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("mousemove", (e) => {
     if (!active) return;
 
-    const layerRect = layer.getBoundingClientRect();
-
-    let x = e.clientX - offsetX - layerRect.left;
-    let y = e.clientY - offsetY - layerRect.top;
-
-    const maxX = layerRect.width - active.offsetWidth;
-    const maxY = layerRect.height - active.offsetHeight;
-
-    x = Math.max(0, Math.min(x, maxX));
-    y = Math.max(0, Math.min(y, maxY));
+    const x = e.clientX - offsetX;
+    const y = e.clientY - offsetY;
 
     active.style.left = x + "px";
     active.style.top = y + "px";
