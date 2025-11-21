@@ -1,13 +1,14 @@
-// Draggable stickers using viewport (fixed) positioning
+// Draggable stickers using absolute positioning inside .page
 document.addEventListener("DOMContentLoaded", () => {
   const stickers = document.querySelectorAll(".sticker");
-  if (!stickers.length) return;
+  const container = document.querySelector(".page");
+  if (!stickers.length || !container) return;
 
   let active = null;
   let offsetX = 0;
   let offsetY = 0;
 
-  stickers.forEach(sticker => {
+  stickers.forEach((sticker) => {
     sticker.addEventListener("mousedown", (e) => {
       active = sticker;
 
@@ -23,11 +24,14 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("mousemove", (e) => {
     if (!active) return;
 
-    const x = e.clientX - offsetX;
-    const y = e.clientY - offsetY;
+    const containerRect = container.getBoundingClientRect();
+
+    const x = e.clientX - containerRect.left - offsetX;
+    const y = e.clientY - containerRect.top - offsetY;
 
     active.style.left = x + "px";
     active.style.top = y + "px";
+    active.style.right = "auto";
   });
 
   document.addEventListener("mouseup", () => {
