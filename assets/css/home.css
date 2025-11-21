@@ -277,4 +277,39 @@ body.dark, body.dark .page {
     display: none;
   }
 }
+/* ===== STICKER LAYER (HOME PAGE) ===== */
+.page {
+  position: relative; /* so stickers can be positioned inside */
+}
+
+.sticker-layer {
+  position: absolute;
+  top: 160px;         /* vertical start */
+  right: 80px;        /* distance from right edge */
+  width: 260px;       /* area they live in */
+  height: 480px;
+  pointer-events: none; /* let only stickers catch clicks */
+}
+
+/* each sticker */
+.sticker {
+  position: absolute;
+  width: 120px;          /* control size here */
+  max-width: 100%;
+  cursor: grab;
+  pointer-events: auto;
+  user-select: none;
+}
+
+/* starting positions so they don't overlap too badly */
+.sticker-1 { top: 0;   left: 40px; }
+.sticker-2 { top: 150px; left: 10px; }
+.sticker-3 { top: 300px; left: 80px; }
+
+@media (max-width: 900px) {
+  /* hide stickers on small screens so they don't crush the text */
+  .sticker-layer {
+    display: none;
+  }
+}
 
