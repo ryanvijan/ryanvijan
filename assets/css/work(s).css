@@ -183,16 +183,12 @@ a {
   transform: translateY(-4px) scale(1.03);
 }
 
-.folder-icon:active {
-  cursor: grabbing;
-  transform: scale(1.04);
-}
-
-/* actual macOS folder image */
 .folder-img {
-  width: 90px;
-  height: auto;
-  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.75));
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.7));
 }
 
 .folder-label {
