@@ -178,6 +178,10 @@ a {
   transition: transform 0.18s ease, filter 0.18s ease;
 }
 
+.folder-icon.dragging {
+  cursor: grabbing;
+  transform: translateY(-4px) scale(1.03);
+}
 
 .folder-icon:active {
   cursor: grabbing;
