@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="assets/css/work(s).css">
- <link rel="stylesheet" href="assets/css/global.css">
   <meta charset="UTF-8">
   <title>work(s) – Ryan Vijan</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/work(s).css">
 </head>
+
 <body class="dark">
 
   <!-- mac menu bar -->
@@ -35,7 +36,8 @@
   </div>
 
   <div class="page">
-    <!-- same header as other pages -->
+
+    <!-- NAV -->
     <header class="top-nav">
       <div class="logo">
         Ask, and it shall be given you...
@@ -49,7 +51,8 @@
     </header>
 
     <main class="works-main">
-      <!-- short intro -->
+
+      <!-- INTRO -->
       <section class="works-intro">
         <h1>work(s)</h1>
         <p class="tagline">
@@ -61,43 +64,47 @@
         </p>
       </section>
 
-      <!-- desktop-style area with scattered folders -->
+      <!-- DESKTOP FOLDERS -->
       <section class="desktop-area">
         <div class="folder-grid">
-          <a href="work-sneakers.html" class="folder-icon folder-1">
-            <div class="folder-body"></div>
-            <span class="folder-label">Sneaker&nbsp;Resale</span>
-          </a>
 
-          <a href="#venture-brand" class="folder-icon folder-2">
-            <div class="folder-body"></div>
-            <span class="folder-label">Clothing&nbsp;Brand</span>
-          </a>
+          <div class="folder-icon folder-1" data-link="work-sneakers.html">
+            <img src="assets/img/folder.png" class="folder-img" alt="Sneaker Resale folder">
+            <div class="folder-label">Sneaker Resale</div>
+          </div>
 
-          <a href="#venture-content" class="folder-icon folder-3">
-            <div class="folder-body"></div>
-            <span class="folder-label">Content&nbsp;/&nbsp;IG</span>
-          </a>
+          <div class="folder-icon folder-2" data-link="work-clothing.html">
+            <img src="assets/img/folder.png" class="folder-img" alt="Clothing Brand folder">
+            <div class="folder-label">Clothing Brand</div>
+          </div>
 
-          <a href="#venture-sales" class="folder-icon folder-4">
-            <div class="folder-body"></div>
-            <span class="folder-label">Sales&nbsp;Roles</span>
-          </a>
+          <div class="folder-icon folder-3" data-link="work-content.html">
+            <img src="assets/img/folder.png" class="folder-img" alt="Content IG folder">
+            <div class="folder-label">Content / IG</div>
+          </div>
 
-          <a href="#venture-club" class="folder-icon folder-5">
-            <div class="folder-body"></div>
-            <span class="folder-label">Clubs&nbsp;/&nbsp;Campus</span>
-          </a>
+          <div class="folder-icon folder-4" data-link="work-sales.html">
+            <img src="assets/img/folder.png" class="folder-img" alt="Sales Roles folder">
+            <div class="folder-label">Sales Roles</div>
+          </div>
 
-          <a href="#venture-misc" class="folder-icon folder-6">
-            <div class="folder-body"></div>
-            <span class="folder-label">Misc.&nbsp;Experiments</span>
-          </a>
+          <div class="folder-icon folder-5" data-link="work-clubs.html">
+            <img src="assets/img/folder.png" class="folder-img" alt="Clubs & Campus folder">
+            <div class="folder-label">Clubs / Campus</div>
+          </div>
+
+          <div class="folder-icon folder-6" data-link="work-misc.html">
+            <img src="assets/img/folder.png" class="folder-img" alt="Misc Experiments folder">
+            <div class="folder-label">Misc. Experiments</div>
+          </div>
+
         </div>
       </section>
+
     </main>
   </div>
 
+  <!-- DATE / TIME SCRIPT -->
   <script>
     function updateMenuTime() {
       var el = document.getElementById('menu-date-time');
@@ -116,6 +123,8 @@
     updateMenuTime();
     setInterval(updateMenuTime, 1000);
   </script>
+
 </body>
 </html>
+
 
