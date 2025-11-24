@@ -59,7 +59,7 @@
 /* Sticker 5 – goes between sticker2 + sticker3, slightly left */
 #sticker5 {
   top: 370px;      /* halfway between 260px and 480px */
-  right: 120px;    /* left enough so it overlaps nicely */
+  right: 160px;    /* left enough so it overlaps nicely */
   transform: rotate(-8deg);
 }
 
