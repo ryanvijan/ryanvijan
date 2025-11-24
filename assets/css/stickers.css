@@ -52,7 +52,7 @@
 /* Sticker 4 – goes between sticker1 + sticker2, slightly left, slight tilt */
 #sticker4 {
   top: 160px;      /* between sticker1 (20px) and sticker2 (260px) */
-  right: 140px;    /* further left so it overlaps but doesn’t cover */
+  right: 180px;    /* further left so it overlaps but doesn’t cover */
   transform: rotate(5deg);
 }
 
