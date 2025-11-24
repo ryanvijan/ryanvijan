@@ -49,3 +49,17 @@
     width: 100px;
   }
 }
+/* Sticker 4 – goes between sticker1 + sticker2, slightly left, slight tilt */
+#sticker4 {
+  top: 160px;      /* between sticker1 (20px) and sticker2 (260px) */
+  right: 140px;    /* further left so it overlaps but doesn’t cover */
+  transform: rotate(5deg);
+}
+
+/* Sticker 5 – goes between sticker2 + sticker3, slightly left */
+#sticker5 {
+  top: 370px;      /* halfway between 260px and 480px */
+  right: 120px;    /* left enough so it overlaps nicely */
+  transform: rotate(-8deg);
+}
+
