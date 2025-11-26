@@ -197,12 +197,12 @@ a {
 }
 
 /* nicely spaced across the screen (starting positions) */
-.folder-1 { top: 80px;  left: 12%; }
-.folder-2 { top: 80px;  left: 42%; }
-.folder-3 { top: 80px;  left: 72%; }
-.folder-4 { top: 260px; left: 20%; }
-.folder-5 { top: 260px; left: 50%; }
-.folder-6 { top: 260px; left: 80%; }
+.folder-1 { top: 20px;  left: 12%; }
+.folder-2 { top: 20px;  left: 42%; }
+.folder-3 { top: 20px;  left: 72%; }
+.folder-4 { top: 160px; left: 20%; }
+.folder-5 { top: 160px; left: 50%; }
+.folder-6 { top: 160px; left: 80%; }
 
 
 /* ========== RESPONSIVE ========== */
