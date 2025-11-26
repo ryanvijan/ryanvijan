@@ -152,8 +152,8 @@ a {
 /* ========== DESKTOP AREA WITH FOLDERS ========== */
 .desktop-area {
   position: relative;
-  margin-top: 40px;
-  min-height: calc(100vh - 220px); /* room under intro */
+  margin-top: 10px;
+  min-height: calc(100vh - 260px); /* room under intro */
 }
 
 /* container for all folders */
