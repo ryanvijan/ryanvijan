@@ -125,6 +125,17 @@
     setInterval(updateMenuTime, 1000);
   </script>
   <script src="assets/js/works.js" defer></script>
+  <script>
+  document.querySelectorAll(".folder-icon").forEach(folder => {
+    folder.addEventListener("click", () => {
+      const link = folder.dataset.link;
+      if (link) {
+        window.location.href = link;
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
 
