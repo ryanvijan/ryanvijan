@@ -1,1 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Art – Ryan Vijan</title>
+
+  <!-- same CSS as home so layout matches -->
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+</head>
+<body class="dark">
+  <!-- mac menu bar -->
+  <div class="menu-bar">
+    <div class="menu-left">
+      <span class="apple-logo"></span>
+      <span class="menu-item">Ryan</span>
+      <span class="menu-item">File</span>
+      <span class="menu-item">Edit</span>
+      <span class="menu-item">View</span>
+      <span class="menu-item">Go</span>
+      <span class="menu-item">Window</span>
+      <span class="menu-item">Help</span>
+    </div>
+    <div class="menu-right">
+      <span class="icon menu-item">🔊</span>
+      <span class="icon menu-item">📶</span>
+      <span class="battery menu-item">
+        <span class="battery-icon">
+          <span class="battery-level"></span>
+        </span>
+        100%
+      </span>
+      <span id="menu-date-time" class="menu-item"></span>
+    </div>
+  </div>
+
+  <div class="page">
+    <!-- top nav -->
+    <header class="top-nav">
+      <div class="logo">
+        Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you...
+      </div>
+      <nav>
+        <a href="index.html">home</a>
+        <a href="work(s).html" class="active">work(s)</a>
+        <a href="mantra.html">mantra</a>
+        <a href="contact.html">contact</a>
+      </nav>
+    </header>
+
+    <main class="layout single-column">
+      <section class="content">
+
+        <!-- breadcrumb / back link -->
+        <p style="margin-bottom: 12px; font-size: 0.9rem;">
+          <a href="work(s).html" style="text-decoration:none;">← back to work(s)</a>
+        </p>
+
+        <!-- page title -->
+        <h1>Sneaker Resale</h1>
+        <p class="tagline">
+          A workspace for everything tied to the sneaker resell era – photos, spreadsheets, random artifacts.
+        </p>
+
+        <!-- You can customize all of this -->
+        <p>
+          This page will eventually house product photos, Instagram posts, notes, and any docs from the
+          sneaker resale venture. Think of it like a little archive for that chapter.
+        </p>
+
+        <h2>Artifacts</h2>
+        <ul>
+          <li>📸 Product shots / fit pics (coming soon)</li>
+          <li>📊 Old pricing spreadsheets</li>
+          <li>📝 Notes on negotiations, sourcing, and flips</li>
+        </ul>
+
+        <!-- add more sections, images, links, etc. as you go -->
+      </section>
+    </main>
+  </div>
+
+  <script>
+    function updateMenuTime() {
+      var el = document.getElementById('menu-date-time');
+      if (!el) return;
+      var now = new Date();
+      var options = {
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit'
+      };
+      el.textContent = now.toLocaleString(undefined, options);
+    }
+
+    updateMenuTime();
+    setInterval(updateMenuTime, 1000);
+  </script>
+</body>
+</html>
 
