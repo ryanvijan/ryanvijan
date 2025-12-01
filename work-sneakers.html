@@ -108,6 +108,49 @@
     updateMenuTime();
     setInterval(updateMenuTime, 1000);
   </script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('sneaker-scrapbook');
+    if (!container) return;
+
+    const photos = Array.from(container.querySelectorAll('.scrap-photo'));
+    if (!photos.length) return;
+
+    const { width: cw, height: ch } = container.getBoundingClientRect();
+
+    // rough grid so they don't overlap too much
+    const cols = 5;                 // how many columns across
+    const rows = Math.ceil(photos.length / cols);
+
+    const cellW = cw / cols;
+    const cellH = ch / rows;
+
+    photos.forEach((photo, index) => {
+      const col = index % cols;
+      const row = Math.floor(index / cols);
+
+      // random jitter inside each “cell” so it feels scattered
+      const maxX = cellW - 220;     // 220 ≈ photo width + padding
+      const maxY = cellH - 170;     // 170 ≈ photo height + padding
+
+      const jitterX = (Math.random() - 0.5) * 0.4 * cellW;   // ±20% cell width
+      const jitterY = (Math.random() - 0.5) * 0.4 * cellH;   // ±20% cell height
+
+      let x = col * cellW + (maxX > 0 ? Math.random() * maxX : 0) + jitterX;
+      let y = row * cellH + (maxY > 0 ? Math.random() * maxY : 0) + jitterY;
+
+      // keep inside container bounds
+      x = Math.max(0, Math.min(cw - 220, x));
+      y = Math.max(0, Math.min(ch - 170, y));
+
+      const tilt = (Math.random() * 12) - 6;  // -6deg to +6deg
+
+      photo.style.left = x + 'px';
+      photo.style.top = y + 'px';
+      photo.style.transform = `rotate(${tilt}deg)`;
+    });
+  });
+</script>
 </body>
 </html>
 
