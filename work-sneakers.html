@@ -4,12 +4,16 @@
   <meta charset="UTF-8">
   <title>Sneaker Resale – Ryan Vijan</title>
 
-  <!-- same CSS as home so layout matches -->
+  <!-- global + shared styles -->
   <link rel="stylesheet" href="assets/css/global.css">
   <link rel="stylesheet" href="assets/css/home.css">
-  <link rel="stylesheet" href="assets/css/scrapbook.css">
+
+  <!-- page-specific -->
+  <link rel="stylesheet" href="assets/css/work-sneakers.css">
 </head>
+
 <body class="dark">
+
   <!-- mac menu bar -->
   <div class="menu-bar">
     <div class="menu-left">
@@ -36,6 +40,7 @@
   </div>
 
   <div class="page">
+
     <!-- top nav -->
     <header class="top-nav">
       <div class="logo">
@@ -49,60 +54,69 @@
       </nav>
     </header>
 
-   <main class="layout single-column">
-  <section class="content sneaker-hero">
+    <main class="layout single-column">
+      <section class="content sneaker-hero">
 
-    <!-- back link -->
-    <p class="back-link">
-      <a href="work(s).html">← back to work(s)</a>
-    </p>
+        <!-- back link -->
+        <p class="back-link">
+          <a href="work(s).html">← back to work(s)</a>
+        </p>
 
-    <!-- LOGO -->
-    <div class="sneaker-logo">
-      <img src="assets/img/sneaker-logo.png" alt="Sneaker Resale Logo">
-    </div>
+        <!-- CIRCULAR LOGO -->
+        <div class="sneaker-logo">
+          <img src="assets/img/sneaker-logo.png" alt="Sneaker Resale Logo">
+        </div>
 
-    <!-- STATS -->
-    <div class="sneaker-stats">
-      <div class="stat">
-        <span class="stat-number">$50K+</span>
-        <span class="stat-label">Revenue Generated</span>
-      </div>
-      <div class="stat">
-        <span class="stat-number">400+</span>
-        <span class="stat-label">Sneakers Sold</span>
-      </div>
-      <div class="stat">
-        <span class="stat-number">700+</span>
-        <span class="stat-label">Transactions</span>
-      </div>
-    </div>
+        <!-- STATS -->
+        <div class="sneaker-stats">
+          <div class="stat">
+            <span class="stat-number">$50K+</span>
+            <span class="stat-label">Revenue Generated</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">400+</span>
+            <span class="stat-label">Sneakers Sold</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">700+</span>
+            <span class="stat-label">Transactions</span>
+          </div>
+        </div>
 
-    <hr class="soft-divider">
+        <!-- NOTE -->
+        <p class="sneaker-note">
+          <strong>Note:</strong> Built independently during high school through local meetups,
+          Instagram, and repeat buyers.
+        </p>
 
-    <!-- IMAGE ERA -->
-    <section class="sneaker-gallery">
-      <div class="gallery-item">
-        <img src="assets/img/sneaker-1.jpg" alt="">
-        <div class="gallery-caption">First bulk flip</div>
-      </div>
+        <hr class="soft-divider">
 
-      <div class="gallery-item">
-        <img src="assets/img/sneaker-2.jpg" alt="">
-        <div class="gallery-caption">Storage era</div>
-      </div>
+        <!-- IMAGE GALLERY -->
+        <section class="sneaker-gallery">
 
-      <div class="gallery-item">
-        <img src="assets/img/sneaker-3.jpg" alt="">
-        <div class="gallery-caption">Local meetups</div>
-      </div>
+          <div class="gallery-item">
+            <img src="assets/img/sneaker-1.jpg" alt="">
+            <div class="gallery-caption">First bulk flip</div>
+          </div>
 
-      <!-- duplicate up to ~20 -->
-    </section>
-  </section>
-</main>
+          <div class="gallery-item">
+            <img src="assets/img/sneaker-2.jpg" alt="">
+            <div class="gallery-caption">Storage era</div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="assets/img/sneaker-3.jpg" alt="">
+            <div class="gallery-caption">Local meetups</div>
+          </div>
+
+          <!-- duplicate as needed -->
+        </section>
+
+      </section>
+    </main>
   </div>
 
+  <!-- time script -->
   <script>
     function updateMenuTime() {
       var el = document.getElementById('menu-date-time');
@@ -121,47 +135,6 @@
     updateMenuTime();
     setInterval(updateMenuTime, 1000);
   </script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById('sneaker-scrapbook');
-    if (!container) return;
 
-    const photos = Array.from(container.querySelectorAll('.scrap-photo'));
-    if (!photos.length) return;
-
-    const { width: cw, height: ch } = container.getBoundingClientRect();
-
-    // rough grid so they don't overlap too much
-    const cols = 5;                 // how many columns across
-    const rows = Math.ceil(photos.length / cols);
-
-    const cellW = cw / cols;
-    const cellH = ch / rows;
-
-    photos.forEach((photo, index) => {
-      const col = index % cols;
-      const row = Math.floor(index / cols);
-
-      // random jitter inside each “cell” so it feels scattered
-      const maxX = cellW - 220;     // 220 ≈ photo width + padding
-      const maxY = cellH - 170;     // 170 ≈ photo height + padding
-
-      const jitterX = (Math.random() - 0.5) * 0.4 * cellW;   // ±20% cell width
-      const jitterY = (Math.random() - 0.5) * 0.4 * cellH;   // ±20% cell height
-
-      let x = col * cellW + (maxX > 0 ? Math.random() * maxX : 0) + jitterX;
-      let y = row * cellH + (maxY > 0 ? Math.random() * maxY : 0) + jitterY;
-
-      // keep inside container bounds
-      x = Math.max(0, Math.min(cw - 220, x));
-      y = Math.max(0, Math.min(ch - 170, y));
-
-      const tilt = (Math.random() * 12) - 6;  // -6deg to +6deg
-
-      photo.style.left = x + 'px';
-      photo.style.top = y + 'px';
-      photo.style.transform = `rotate(${tilt}deg)`;
-    });
-  });
-</script>
 </body>
+</html>
