@@ -6,25 +6,49 @@
 
   <link rel="stylesheet" href="assets/css/global.css">
   <link rel="stylesheet" href="assets/css/home.css">
-
   <link rel="stylesheet" href="assets/css/work-sneakers.css">
 
   <style>
-    /* Grid Container - Adjusted for mid-page placement */
+    /* LOGO OVERLAP STYLES */
+    .sneaker-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .sneaker-logo img {
+      width: 100px; /* Adjust size as needed */
+      height: 100px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: #1a1a1a; /* Matches your dark theme */
+      border: 2px solid #000;
+      margin: 0 -12px; /* This creates the overlap effect */
+      position: relative;
+      transition: transform 0.3s ease, z-index 0s;
+    }
+
+    /* Makes the hovered logo pop to the front */
+    .sneaker-logo img:hover {
+      transform: scale(1.1);
+      z-index: 10;
+    }
+
+    /* PHOTO GRID STYLES */
     .photo-strip-grid {
       display: grid;
       grid-template-columns: repeat(8, 1fr);
       width: 100%;
       gap: 0;
       overflow: hidden;
-      margin: 20px 0; /* Adds spacing above and below the grid */
-      border-radius: 4px; /* Optional: adds a slight "window" feel */
+      margin: 20px 0;
+      border-radius: 4px;
     }
 
-    /* Individual Grid Item */
     .grid-item {
       position: relative;
-      height: 200px; /* Slightly shorter for mid-page flow */
+      height: 200px;
       overflow: hidden;
       cursor: pointer;
     }
@@ -37,7 +61,6 @@
       transition: transform 0.5s ease, filter 0.3s ease;
     }
 
-    /* Text Overlay */
     .grid-overlay {
       position: absolute;
       top: 0;
@@ -59,7 +82,6 @@
       pointer-events: none;
     }
 
-    /* Hover States */
     .grid-item:hover img {
       filter: blur(2px);
       transform: scale(1.1);
@@ -69,7 +91,6 @@
       opacity: 1;
     }
 
-    /* Responsive: 4x2 on mobile */
     @media (max-width: 768px) {
       .photo-strip-grid {
         grid-template-columns: repeat(4, 1fr);
@@ -124,9 +145,9 @@
         </p>
 
         <div class="sneaker-logo">
-          <img src="assets/img/host.png" alt="Logos">
-          <img src="assets/img/molisana.png" alt="Logos">
-          <img src="assets/img/cove.png" alt="Logos">
+          <img src="assets/img/host.png" alt="Host Logo">
+          <img src="assets/img/molisana.png" alt="Molisana Logo">
+          <img src="assets/img/cove.png" alt="Cove Logo">
         </div>
 
         <div class="sneaker-stats">
