@@ -4,17 +4,81 @@
   <meta charset="UTF-8">
   <title>Sneaker Resale – Ryan Vijan</title>
 
-  <!-- global + shared styles -->
   <link rel="stylesheet" href="assets/css/global.css">
   <link rel="stylesheet" href="assets/css/home.css">
 
-  <!-- page-specific -->
   <link rel="stylesheet" href="assets/css/work-sneakers.css">
+
+  <style>
+    /* Grid Container */
+    .photo-strip-grid {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      width: 100%;
+      gap: 0;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Individual Grid Item */
+    .grid-item {
+      position: relative;
+      height: 150px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .grid-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease, filter 0.3s ease;
+    }
+
+    /* Text Overlay */
+    .grid-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6); /* Darkens the image on hover */
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-align: center;
+      padding: 5px;
+      pointer-events: none; /* Allows hover to maintain focus */
+    }
+
+    /* Hover States */
+    .grid-item:hover img {
+      filter: blur(2px);
+      transform: scale(1.1); /* Subtle zoom effect */
+    }
+
+    .grid-item:hover .grid-overlay {
+      opacity: 1;
+    }
+
+    /* Responsive: 4x2 on mobile */
+    @media (max-width: 768px) {
+      .photo-strip-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  </style>
 </head>
 
 <body class="dark">
 
-  <!-- mac menu bar -->
   <div class="menu-bar">
     <div class="menu-left">
       <span class="apple-logo"></span>
@@ -30,9 +94,7 @@
       <span class="icon menu-item">🔊</span>
       <span class="icon menu-item">📶</span>
       <span class="battery menu-item">
-        <span class="battery-icon">
-          <span class="battery-level"></span>
-        </span>
+        <span class="battery-icon"><span class="battery-level"></span></span>
         100%
       </span>
       <span id="menu-date-time" class="menu-item"></span>
@@ -41,7 +103,6 @@
 
   <div class="page">
 
-    <!-- top nav -->
     <header class="top-nav">
       <div class="logo">
         Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you...
@@ -54,20 +115,49 @@
       </nav>
     </header>
 
+    <section class="photo-strip-grid">
+      <div class="grid-item">
+        <img src="assets/img/photo1.jpg" alt="Sneaker 1">
+        <div class="grid-overlay">Jordan 1 High</div>
+      </div>
+      <div class="grid-item">
+        <img src="assets/img/photo2.jpg" alt="Sneaker 2">
+        <div class="grid-overlay">Inventory Check</div>
+      </div>
+      <div class="grid-item">
+        <img src="assets/img/photo3.jpg" alt="Sneaker 3">
+        <div class="grid-overlay">Deadstock</div>
+      </div>
+      <div class="grid-item">
+        <img src="assets/img/photo4.jpg" alt="Sneaker 4">
+        <div class="grid-overlay">Packaging</div>
+      </div>
+      <div class="grid-item">
+        <img src="assets/img/photo5.jpg" alt="Sneaker 5">
+        <div class="grid-overlay">Yeezy Boost</div>
+      </div>
+      <div class="grid-item">
+        <img src="assets/img/photo6.jpg" alt="Sneaker 6">
+        <div class="grid-overlay">Local Meetup</div>
+      </div>
+      <div class="grid-item">
+        <img src="assets/img/photo7.jpg" alt="Sneaker 7">
+        <div class="grid-overlay">Retro 4s</div>
+      </div>
+      <div class="grid-item">
+        <img src="assets/img/photo8.jpg" alt="Sneaker 8">
+        <div class="grid-overlay">Success</div>
+      </div>
+    </section>
+
     <main class="layout single-column">
       <section class="content sneaker-hero">
-
-        <!-- back link -->
-        <p class="back-link">
-          <a href="work(s).html">← back to work(s)</a>
-        </p>
-
-        <!-- CIRCULAR LOGO -->
+        <p class="back-link"><a href="work(s).html">← back to work(s)</a></p>
+        
         <div class="sneaker-logo">
           <img src="assets/img/sneaker-logo.png" alt="Sneaker Resale Logo">
         </div>
 
-        <!-- STATS -->
         <div class="sneaker-stats">
           <div class="stat">
             <span class="stat-number">$50K+</span>
@@ -83,7 +173,6 @@
           </div>
         </div>
 
-        <!-- NOTE -->
         <p class="sneaker-note">
           <strong>Note:</strong> Built independently during high school through local meetups,
           Instagram, and repeat buyers.
@@ -91,50 +180,37 @@
 
         <hr class="soft-divider">
 
-        <!-- IMAGE GALLERY -->
         <section class="sneaker-gallery">
-
           <div class="gallery-item">
             <img src="assets/img/sneaker-1.jpg" alt="">
             <div class="gallery-caption">First bulk flip</div>
           </div>
-
           <div class="gallery-item">
             <img src="assets/img/sneaker-2.jpg" alt="">
             <div class="gallery-caption">Storage era</div>
           </div>
-
           <div class="gallery-item">
             <img src="assets/img/sneaker-3.jpg" alt="">
             <div class="gallery-caption">Local meetups</div>
           </div>
-
-          <!-- duplicate as needed -->
         </section>
-
       </section>
     </main>
   </div>
 
-  <!-- time script -->
   <script>
     function updateMenuTime() {
       var el = document.getElementById('menu-date-time');
       if (!el) return;
       var now = new Date();
       var options = {
-        weekday: 'short',
-        month: 'short',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: '2-digit'
+        weekday: 'short', month: 'short', day: 'numeric',
+        hour: 'numeric', minute: '2-digit'
       };
       el.textContent = now.toLocaleString(undefined, options);
     }
-
     updateMenuTime();
     setInterval(updateMenuTime, 1000);
   </script>
-
 </body>
 </html>
