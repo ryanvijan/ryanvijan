@@ -2,14 +2,84 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Startups – Ryan Vijan</title>
+  <title>Sneaker Resale – Ryan Vijan</title>
 
-  <!-- same CSS as home so layout matches -->
   <link rel="stylesheet" href="assets/css/global.css">
   <link rel="stylesheet" href="assets/css/home.css">
+
+  <link rel="stylesheet" href="assets/css/work-sneakers.css">
+
+  <style>
+    /* Grid Container - Adjusted for mid-page placement */
+    .photo-strip-grid {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      width: 100%;
+      gap: 0;
+      overflow: hidden;
+      margin: 20px 0; /* Adds spacing above and below the grid */
+      border-radius: 4px; /* Optional: adds a slight "window" feel */
+    }
+
+    /* Individual Grid Item */
+    .grid-item {
+      position: relative;
+      height: 200px; /* Slightly shorter for mid-page flow */
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .grid-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease, filter 0.3s ease;
+    }
+
+    /* Text Overlay */
+    .grid-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-align: center;
+      padding: 5px;
+      pointer-events: none;
+    }
+
+    /* Hover States */
+    .grid-item:hover img {
+      filter: blur(2px);
+      transform: scale(1.1);
+    }
+
+    .grid-item:hover .grid-overlay {
+      opacity: 1;
+    }
+
+    /* Responsive: 4x2 on mobile */
+    @media (max-width: 768px) {
+      .photo-strip-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  </style>
 </head>
+
 <body class="dark">
-  <!-- mac menu bar -->
+
   <div class="menu-bar">
     <div class="menu-left">
       <span class="apple-logo"></span>
@@ -25,9 +95,7 @@
       <span class="icon menu-item">🔊</span>
       <span class="icon menu-item">📶</span>
       <span class="battery menu-item">
-        <span class="battery-icon">
-          <span class="battery-level"></span>
-        </span>
+        <span class="battery-icon"><span class="battery-level"></span></span>
         100%
       </span>
       <span id="menu-date-time" class="menu-item"></span>
@@ -35,7 +103,7 @@
   </div>
 
   <div class="page">
-    <!-- top nav -->
+
     <header class="top-nav">
       <div class="logo">
         Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you...
@@ -49,30 +117,74 @@
     </header>
 
     <main class="layout single-column">
-      <section class="content">
+      <section class="content sneaker-hero">
 
-        <!-- breadcrumb / back link -->
-        <p style="margin-bottom: 12px; font-size: 0.9rem;">
-          <a href="work(s).html" style="text-decoration:none;">← back to work(s)</a>
+        <p class="back-link">
+          <a href="work(s).html">← back to work(s)</a>
         </p>
 
-        <!-- page title -->
-        <h1>Startup Experience</h1>
-        <p class="tagline">
-          Some words from being around some of the most motivated people to work with. Small, energized, agile group of people who never fold under pressure.
+        <div class="sneaker-logo">
+          <img src="assets/img/host.PNG" alt="Logos">
+          <img src="assets/img/molisana.PNG" alt="Logos">
+          <img src="assets/img/cove.PNG" alt="Logos">
+        </div>
+
+        <div class="sneaker-stats">
+          <div class="stat">
+            <span class="stat-number">$50K+</span>
+            <span class="stat-label">Revenue Generated</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">400+</span>
+            <span class="stat-label">Sneakers Sold</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">700+</span>
+            <span class="stat-label">Transactions</span>
+          </div>
+        </div>
+
+        <p class="sneaker-note">
+          <strong>Note:</strong> Built independently during high school through local meetups,
+          Instagram, and repeat buyers.
         </p>
 
-        <!-- You can customize all of this -->
+        <section class="photo-strip-grid">
+          <div class="grid-item">
+            <img src="assets/img/photo1.jpg" alt="Sneaker 1">
+            <div class="grid-overlay">Stock Intake</div>
+          </div>
+          <div class="grid-item">
+            <img src="assets/img/photo2.jpg" alt="Sneaker 2">
+            <div class="grid-overlay">Authentication</div>
+          </div>
+          <div class="grid-item">
+            <img src="assets/img/photo3.jpg" alt="Sneaker 3">
+            <div class="grid-overlay">Shipping Out</div>
+          </div>
+          <div class="grid-item">
+            <img src="assets/img/photo4.jpg" alt="Sneaker 4">
+            <div class="grid-overlay">Market Trends</div>
+          </div>
+          <div class="grid-item">
+            <img src="assets/img/photo5.jpg" alt="Sneaker 5">
+            <div class="grid-overlay">New Drop</div>
+          </div>
+          <div class="grid-item">
+            <img src="assets/img/photo6.jpg" alt="Sneaker 6">
+            <div class="grid-overlay">Inventory</div>
+          </div>
+          <div class="grid-item">
+            <img src="assets/img/photo7.jpg" alt="Sneaker 7">
+            <div class="grid-overlay">Quality Check</div>
+          </div>
+          <div class="grid-item">
+            <img src="assets/img/photo8.jpg" alt="Sneaker 8">
+            <div class="grid-overlay">Sold Out</div>
+          </div>
+        </section>
 
-
-        <h2>Artifacts</h2>
-        <ul>
-          <li>📸 Product shots / fit pics (coming soon)</li>
-          <li>📊 Old pricing spreadsheets</li>
-          <li>📝 Notes on negotiations, sourcing, and flips</li>
-        </ul>
-
-        <!-- add more sections, images, links, etc. as you go -->
+        <hr class="soft-divider">
       </section>
     </main>
   </div>
@@ -83,19 +195,14 @@
       if (!el) return;
       var now = new Date();
       var options = {
-        weekday: 'short',
-        month: 'short',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: '2-digit'
+        weekday: 'short', month: 'short', day: 'numeric',
+        hour: 'numeric', minute: '2-digit'
       };
       el.textContent = now.toLocaleString(undefined, options);
     }
-
     updateMenuTime();
     setInterval(updateMenuTime, 1000);
   </script>
+
 </body>
 </html>
-
-
