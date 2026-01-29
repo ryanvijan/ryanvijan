@@ -10,20 +10,21 @@
   <link rel="stylesheet" href="assets/css/work-sneakers.css">
 
   <style>
-    /* Grid Container */
+    /* Grid Container - Adjusted for mid-page placement */
     .photo-strip-grid {
       display: grid;
       grid-template-columns: repeat(8, 1fr);
       width: 100%;
       gap: 0;
       overflow: hidden;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      margin: 20px 0; /* Adds spacing above and below the grid */
+      border-radius: 4px; /* Optional: adds a slight "window" feel */
     }
 
     /* Individual Grid Item */
     .grid-item {
       position: relative;
-      height: 150px;
+      height: 120px; /* Slightly shorter for mid-page flow */
       overflow: hidden;
       cursor: pointer;
     }
@@ -43,25 +44,25 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.6); /* Darkens the image on hover */
+      background: rgba(0, 0, 0, 0.7);
       color: white;
       display: flex;
       align-items: center;
       justify-content: center;
       opacity: 0;
       transition: opacity 0.3s ease;
-      font-size: 0.75rem;
+      font-size: 0.65rem;
       text-transform: uppercase;
       letter-spacing: 1px;
       text-align: center;
       padding: 5px;
-      pointer-events: none; /* Allows hover to maintain focus */
+      pointer-events: none;
     }
 
     /* Hover States */
     .grid-item:hover img {
       filter: blur(2px);
-      transform: scale(1.1); /* Subtle zoom effect */
+      transform: scale(1.1);
     }
 
     .grid-item:hover .grid-overlay {
@@ -115,45 +116,13 @@
       </nav>
     </header>
 
-    <section class="photo-strip-grid">
-      <div class="grid-item">
-        <img src="assets/img/photo1.jpg" alt="Sneaker 1">
-        <div class="grid-overlay">Jordan 1 High</div>
-      </div>
-      <div class="grid-item">
-        <img src="assets/img/photo2.jpg" alt="Sneaker 2">
-        <div class="grid-overlay">Inventory Check</div>
-      </div>
-      <div class="grid-item">
-        <img src="assets/img/photo3.jpg" alt="Sneaker 3">
-        <div class="grid-overlay">Deadstock</div>
-      </div>
-      <div class="grid-item">
-        <img src="assets/img/photo4.jpg" alt="Sneaker 4">
-        <div class="grid-overlay">Packaging</div>
-      </div>
-      <div class="grid-item">
-        <img src="assets/img/photo5.jpg" alt="Sneaker 5">
-        <div class="grid-overlay">Yeezy Boost</div>
-      </div>
-      <div class="grid-item">
-        <img src="assets/img/photo6.jpg" alt="Sneaker 6">
-        <div class="grid-overlay">Local Meetup</div>
-      </div>
-      <div class="grid-item">
-        <img src="assets/img/photo7.jpg" alt="Sneaker 7">
-        <div class="grid-overlay">Retro 4s</div>
-      </div>
-      <div class="grid-item">
-        <img src="assets/img/photo8.jpg" alt="Sneaker 8">
-        <div class="grid-overlay">Success</div>
-      </div>
-    </section>
-
     <main class="layout single-column">
       <section class="content sneaker-hero">
-        <p class="back-link"><a href="work(s).html">← back to work(s)</a></p>
-        
+
+        <p class="back-link">
+          <a href="work(s).html">← back to work(s)</a>
+        </p>
+
         <div class="sneaker-logo">
           <img src="assets/img/sneaker-logo.png" alt="Sneaker Resale Logo">
         </div>
@@ -178,6 +147,41 @@
           Instagram, and repeat buyers.
         </p>
 
+        <section class="photo-strip-grid">
+          <div class="grid-item">
+            <img src="assets/img/photo1.jpg" alt="Sneaker 1">
+            <div class="grid-overlay">Stock Intake</div>
+          </div>
+          <div class="grid-item">
+            <img src="assets/img/photo2.jpg" alt="Sneaker 2">
+            <div class="grid-overlay">Authentication</div>
+          </div>
+          <div class="grid-item">
+            <img src="assets/img/photo3.jpg" alt="Sneaker 3">
+            <div class="grid-overlay">Shipping Out</div>
+          </div>
+          <div class="grid-item">
+            <img src="assets/img/photo4.jpg" alt="Sneaker 4">
+            <div class="grid-overlay">Market Trends</div>
+          </div>
+          <div class="grid-item">
+            <img src="assets/img/photo5.jpg" alt="Sneaker 5">
+            <div class="grid-overlay">New Drop</div>
+          </div>
+          <div class="grid-item">
+            <img src="assets/img/photo6.jpg" alt="Sneaker 6">
+            <div class="grid-overlay">Inventory</div>
+          </div>
+          <div class="grid-item">
+            <img src="assets/img/photo7.jpg" alt="Sneaker 7">
+            <div class="grid-overlay">Quality Check</div>
+          </div>
+          <div class="grid-item">
+            <img src="assets/img/photo8.jpg" alt="Sneaker 8">
+            <div class="grid-overlay">Sold Out</div>
+          </div>
+        </section>
+
         <hr class="soft-divider">
 
         <section class="sneaker-gallery">
@@ -194,6 +198,7 @@
             <div class="gallery-caption">Local meetups</div>
           </div>
         </section>
+
       </section>
     </main>
   </div>
@@ -212,5 +217,6 @@
     updateMenuTime();
     setInterval(updateMenuTime, 1000);
   </script>
+
 </body>
 </html>
