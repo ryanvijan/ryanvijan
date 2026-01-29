@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="assets/css/work-sneakers.css">
 
   <style>
-    /* Grid Container - Adjusted for mid-page placement */
     .photo-strip-grid {
       display: grid;
       grid-template-columns: repeat(8, 1fr);
@@ -18,14 +17,15 @@
       overflow: hidden;
       margin: 20px 0;
       border-radius: 4px;
+      background: #000; /* Ensures no white cracks between images */
     }
 
-    /* Individual Grid Item */
     .grid-item {
       position: relative;
       height: 200px;
       overflow: hidden;
       cursor: pointer;
+      background: #111; /* Placeholder color while loading */
     }
 
     .grid-item img {
@@ -36,7 +36,6 @@
       transition: transform 0.5s ease, filter 0.3s ease;
     }
 
-    /* Text Overlay */
     .grid-overlay {
       position: absolute;
       top: 0;
@@ -58,7 +57,6 @@
       pointer-events: none;
     }
 
-    /* Hover States */
     .grid-item:hover img {
       filter: blur(2px);
       transform: scale(1.1);
@@ -68,7 +66,6 @@
       opacity: 1;
     }
 
-    /* Responsive: 4x2 on mobile */
     @media (max-width: 768px) {
       .photo-strip-grid {
         grid-template-columns: repeat(4, 1fr);
@@ -102,7 +99,6 @@
   </div>
 
   <div class="page">
-
     <header class="top-nav">
       <div class="logo">
         Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you...
@@ -117,19 +113,20 @@
 
     <main class="layout single-column">
       <section class="content sneaker-hero">
-
         <p class="back-link">
           <a href="work(s).html">← back to work(s)</a>
         </p>
+        
         <p class="tagline">
-          Some creations I've made in my free time...I listen to this while i create <a href="https://open.spotify.com/playlist/7jUT2MNnDBXWF33RLZNTf6?si=27e8b69a48ea4038" target="_blank">"REALETHER"</a>
+          Some creations I've made in my free time... I listen to this while I create <a href="https://open.spotify.com/playlist/37i9dQZF1E4vM9M9M9M9M9" target="_blank">"REALETHER"</a>
         </p>
 
         <p>
           Check them out! Also follow <a href="https://www.instagram.com/lorem.ip5um/" target="_blank">"@lorem_ip5um"</a> on Instagram for more...
         </p>
+
         <div class="sneaker-logo">
-          <img src="assets/img/lorem.png" alt="L000REM">
+          <img src="assets/img/lorem.png" alt="L000REM" draggable="false">
         </div>
 
         <div class="sneaker-stats">
@@ -154,73 +151,72 @@
         <section class="photo-strip-grid">
           <div class="grid-item">
             <img src="assets/img/loremipsum8.png" alt="Creation 8">
-            <div class="grid-overlay">Archive 08</div>
+            <div class="grid-overlay">Creation 8</div>
           </div>
           <div class="grid-item">
             <img src="assets/img/loremipsum9v2.png" alt="Creation 9v2">
-            <div class="grid-overlay">Concept 9v2</div>
+            <div class="grid-overlay">Creation 9v2</div>
           </div>
           <div class="grid-item">
             <img src="assets/img/loremipsum9v3.png" alt="Creation 9v3">
-            <div class="grid-overlay">Concept 9v3</div>
+            <div class="grid-overlay">Creation 9v3</div>
           </div>
           <div class="grid-item">
             <img src="assets/img/loremipsum10v2.png" alt="Creation 10v2">
-            <div class="grid-overlay">Artifact 10v2</div>
+            <div class="grid-overlay">Creation 10v2</div>
           </div>
           <div class="grid-item">
             <img src="assets/img/loremipsum11.png" alt="Creation 11">
-            <div class="grid-overlay">Artifact 11</div>
+            <div class="grid-overlay">Creation 11</div>
           </div>
           <div class="grid-item">
             <img src="assets/img/loremipsum12.png" alt="Creation 12">
-            <div class="grid-overlay">Artifact 12</div>
+            <div class="grid-overlay">Creation 12</div>
           </div>
           <div class="grid-item">
             <img src="assets/img/loremipsum13.png" alt="Creation 13">
-            <div class="grid-overlay">Design 13</div>
+            <div class="grid-overlay">Creation 13</div>
           </div>
           <div class="grid-item">
             <img src="assets/img/loremipsum14.png" alt="Creation 14">
-            <div class="grid-overlay">Design 14</div>
+            <div class="grid-overlay">Creation 14</div>
           </div>
 
           <div class="grid-item">
             <img src="assets/img/loremipsum16.png" alt="Creation 16">
-            <div class="grid-overlay">Visual 16</div>
+            <div class="grid-overlay">Creation 16</div>
           </div>
           <div class="grid-item">
             <img src="assets/img/loremipsum17.png" alt="Creation 17">
-            <div class="grid-overlay">Visual 17</div>
+            <div class="grid-overlay">Creation 17</div>
           </div>
           <div class="grid-item">
             <img src="assets/img/loremipsum18.png" alt="Creation 18">
-            <div class="grid-overlay">Draft 18</div>
+            <div class="grid-overlay">Creation 18</div>
           </div>
           <div class="grid-item">
             <img src="assets/img/loremipsum19.png" alt="Creation 19">
-            <div class="grid-overlay">Draft 19</div>
+            <div class="grid-overlay">Creation 19</div>
           </div>
           <div class="grid-item">
             <img src="assets/img/loremipsumamriel4.png" alt="Amriel 4">
-            <div class="grid-overlay">Amriel Spec 4</div>
+            <div class="grid-overlay">Amriel 4</div>
           </div>
           <div class="grid-item">
             <img src="assets/img/loremipsumamriel7.png" alt="Amriel 7">
-            <div class="grid-overlay">Amriel Spec 7</div>
+            <div class="grid-overlay">Amriel 7</div>
           </div>
           <div class="grid-item">
             <img src="assets/img/loremipsum7v2.png" alt="Creation 7v2">
-            <div class="grid-overlay">Variant 7v2</div>
+            <div class="grid-overlay">Creation 7v2</div>
           </div>
           <div class="grid-item">
             <img src="assets/img/placeholder.png" alt="Coming Soon">
-            <div class="grid-overlay">Upcoming</div>
+            <div class="grid-overlay">Coming Soon</div>
           </div>
         </section>
 
         <hr class="soft-divider">
-
       </section>
     </main>
   </div>
@@ -239,6 +235,5 @@
     updateMenuTime();
     setInterval(updateMenuTime, 1000);
   </script>
-
 </body>
 </html>
