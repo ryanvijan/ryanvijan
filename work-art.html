@@ -11,10 +11,8 @@
   <style>
     .photo-strip-grid {
       display: grid;
-      /* 4 columns makes the images much larger */
       grid-template-columns: repeat(4, 1fr); 
       width: 100%;
-      /* 15px gap adds a clean gallery feel */
       gap: 15px; 
       margin: 20px 0;
       border-radius: 4px;
@@ -22,7 +20,6 @@
 
     .grid-item {
       position: relative;
-      /* Forces a perfect square shape */
       aspect-ratio: 1 / 1; 
       width: 100%;
       overflow: hidden;
@@ -33,7 +30,6 @@
     .grid-item img {
       width: 100%;
       height: 100%;
-      /* Ensures the photo fills the square without stretching */
       object-fit: cover; 
       display: block;
       transition: transform 0.5s ease, filter 0.3s ease;
@@ -69,7 +65,6 @@
       opacity: 1;
     }
 
-    /* Mobile view: 2 columns so they don't get too small */
     @media (max-width: 768px) {
       .photo-strip-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -122,9 +117,36 @@
           <a href="work(s).html">← back to work(s)</a>
         </p>
         
+        <p class="tagline">
+          Some creations I've made in my free time... I listen to this while I create <a href="https://open.spotify.com/playlist/37i9dQZF1E4vM9M9M9M9M9" target="_blank">"REALETHER"</a>
+        </p>
+
+        <p>
+          Check them out! Also follow <a href="https://www.instagram.com/lorem.ip5um/" target="_blank">"@lorem_ip5um"</a> on Instagram for more...
+        </p>
+
         <div class="sneaker-logo">
           <img src="assets/img/lorem.png" alt="L000REM" draggable="false">
         </div>
+
+        <div class="sneaker-stats">
+          <div class="stat">
+            <span class="stat-number">20+</span>
+            <span class="stat-label">Creations</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">1</span>
+            <span class="stat-label">Vision</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">∞</span>
+            <span class="stat-label">Hustle</span>
+          </div>
+        </div>
+
+        <p class="sneaker-note">
+          <strong>Note:</strong> A collection of visual experiments and graphic designs.
+        </p>
 
         <section class="photo-strip-grid">
           <div class="grid-item"><img src="assets/img/loremipsum1.png" alt=""><div class="grid-overlay">Creation 1</div></div>
