@@ -178,6 +178,40 @@ body.dark .menu-bar {
   /* Stack stats blocks if they exist on the page */
   .sneaker-stats {
     flex-direction: column;
+
+    /* ===== MOBILE ORGANIZATION FIX ===== */
+@media (max-width: 768px) {
+  /* 1. Target the container holding the images */
+  /* Assuming your images are inside a div with a class like .image-container or just the body */
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* 2. Reset the scattered images */
+  /* Target the specific class you used for the draggable/scattered images */
+  .scattered-image, 
+  .draggable-photo,
+  [style*="position: absolute"] { 
+    position: relative !important; /* Forces them back into the layout flow */
+    top: auto !important;
+    left: auto !important;
+    margin: 10px auto !important; /* Centers them with spacing */
+    width: 90% !important; /* Makes them large and readable on phone */
+    max-width: 300px;
+    transform: none !important; /* Removes the tilted/rotated look */
+    display: block;
+  }
+
+  /* 3. Ensure the text doesn't hide behind images */
+  p, h1, .tagline {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 0 10px;
+  }
+}
     align-items: center;
     gap: 20px;
   }
