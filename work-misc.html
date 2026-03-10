@@ -3,14 +3,78 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
   <meta charset="UTF-8">
-  <title>3D Printing – Ryan Vijan</title>
+  <title>Hysteria – Ryan Vijan</title>
 
-  <!-- same CSS as home so layout matches -->
   <link rel="stylesheet" href="assets/css/global.css">
   <link rel="stylesheet" href="assets/css/home.css">
+  <link rel="stylesheet" href="assets/css/work-sneakers.css">
+
+  <style>
+    .photo-strip-grid {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      width: 100%;
+      gap: 0;
+      overflow: hidden;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+
+    .grid-item {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .grid-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease, filter 0.3s ease;
+    }
+
+    .grid-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-align: center;
+      padding: 5px;
+      pointer-events: none;
+    }
+
+    .grid-item:hover img {
+      filter: blur(2px);
+      transform: scale(1.1);
+    }
+
+    .grid-item:hover .grid-overlay {
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .photo-strip-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  </style>
 </head>
+
 <body class="dark">
-  <!-- mac menu bar -->
+
   <div class="menu-bar">
     <div class="menu-left">
       <span class="apple-logo"></span>
@@ -26,9 +90,7 @@
       <span class="icon menu-item">🔊</span>
       <span class="icon menu-item">📶</span>
       <span class="battery menu-item">
-        <span class="battery-icon">
-          <span class="battery-level"></span>
-        </span>
+        <span class="battery-icon"><span class="battery-level"></span></span>
         100%
       </span>
       <span id="menu-date-time" class="menu-item"></span>
@@ -36,7 +98,6 @@
   </div>
 
   <div class="page">
-    <!-- top nav -->
     <header class="top-nav">
       <div class="logo">
         Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you...
@@ -50,12 +111,29 @@
     </header>
 
     <main class="layout single-column">
-      <section class="content">
-
-        <!-- breadcrumb / back link -->
-        <p style="margin-bottom: 12px; font-size: 0.9rem;">
-          <a href="work(s).html" style="text-decoration:none;">← back to work(s)</a>
+      <section class="content sneaker-hero">
+        <p class="back-link">
+          <a href="work(s).html">← back to work(s)</a>
         </p>
+
+        <div class="sneaker-logo">
+          <img src="assets/img/hysteria.png" alt="Hysteria Logo">
+        </div>
+
+        <div class="sneaker-stats">
+          <div class="stat">
+            <span class="stat-number">60+</span>
+            <span class="stat-label">Artifacts</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">2026</span>
+            <span class="stat-label">Archive Year</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">∞</span>
+            <span class="stat-label">Iteration</span>
+          </div>
+        </div>
 
         <!-- page title -->
         <h1>3D Printing</h1>
@@ -70,37 +148,17 @@
         </p>
 
        <section class="photo-strip-grid">
-          <div class="grid-item"><img src="assets/img/hysteria.jpeg" alt=""><div class="grid-overlay">Archive 00</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (1).jpeg" alt=""><div class="grid-overlay">Detail 01</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (2).jpeg" alt=""><div class="grid-overlay">Detail 02</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (3).jpeg" alt=""><div class="grid-overlay">Detail 03</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (4).jpeg" alt=""><div class="grid-overlay">Detail 04</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (5).jpeg" alt=""><div class="grid-overlay">Detail 05</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (6).jpeg" alt=""><div class="grid-overlay">Detail 06</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (7).jpeg" alt=""><div class="grid-overlay">Detail 07</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (8).jpeg" alt=""><div class="grid-overlay">Detail 08</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (9).jpeg" alt=""><div class="grid-overlay">Detail 09</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (10).jpeg" alt=""><div class="grid-overlay">Detail 10</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (11).jpeg" alt=""><div class="grid-overlay">Detail 11</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (12).jpeg" alt=""><div class="grid-overlay">Detail 12</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (13).jpeg" alt=""><div class="grid-overlay">Detail 13</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (14).jpeg" alt=""><div class="grid-overlay">Detail 14</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (15).jpeg" alt=""><div class="grid-overlay">Detail 15</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (16).jpeg" alt=""><div class="grid-overlay">Detail 16</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (17).jpeg" alt=""><div class="grid-overlay">Detail 17</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (18).jpeg" alt=""><div class="grid-overlay">Detail 18</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (19).jpeg" alt=""><div class="grid-overlay">Detail 19</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (20).jpeg" alt=""><div class="grid-overlay">Detail 20</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (21).jpeg" alt=""><div class="grid-overlay">Detail 21</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (22).jpeg" alt=""><div class="grid-overlay">Detail 22</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (23).jpeg" alt=""><div class="grid-overlay">Detail 23</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (24).jpeg" alt=""><div class="grid-overlay">Detail 24</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (25).jpeg" alt=""><div class="grid-overlay">Detail 25</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (26).jpeg" alt=""><div class="grid-overlay">Detail 26</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (27).jpeg" alt=""><div class="grid-overlay">Detail 27</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (28).jpeg" alt=""><div class="grid-overlay">Detail 28</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (29).jpeg" alt=""><div class="grid-overlay">Detail 29</div></div>
-          <div class="grid-item"><img src="assets/img/hysteria (30).jpeg" alt=""><div class="grid-overlay">Detail 30</div></div>
+          <div class="grid-item"><img src="assets/img/MONKEY.png" alt="Smoking Monkey Incense Holder"><div class="grid-overlay">Detail 01</div></div>
+          <div class="grid-item"><img src="assets/img/WINE.png" alt="Toy Soldier Wine Bottle Holder"><div class="grid-overlay">Detail 02</div></div>
+          <div class="grid-item"><img src="assets/img/earjibbitzcherub.png" alt="Jibbitz for Wired Earbuds (also act as a loop to wrap earbuds around to keep them untangled)"><div class="grid-overlay">Detail 03</div></div>
+          <div class="grid-item"><img src="assets/img/frame.png" alt="PSD Select Tool Frame"><div class="grid-overlay">Detail 05</div></div>
+          <div class="grid-item"><img src="assets/img/4.png" alt="Apple Folder Notebook (each page has a unique QR code that connects to a digital journal)"><div class="grid-overlay">Detail 06</div></div>
+          <div class="grid-item"><img src="assets/img/7.png" alt="Rick Owens Lighter Holder"><div class="grid-overlay">Detail 07</div></div>
+          <div class="grid-item"><img src="assets/img/9.png" alt="Rick Rubin Plant Holder"><div class="grid-overlay">Detail 08</div></div>
+          <div class="grid-item"><img src="assets/img/NET.png" alt="Nettspend Mii Plush with Interactive Video Game via NFC"><div class="grid-overlay">Detail 09</div></div>
+          <div class="grid-item"><img src="assets/img/earjibbitzleaf.png" alt="Vine Jibbitz for Earbuds"><div class="grid-overlay">Detail 10</div></div>
+          <div class="grid-item"><img src="assets/img/16.png" alt="Evidence Bags (clear material irony)"><div class="grid-overlay">Detail 11</div></div>
+          <div class="grid-item"><img src="assets/img/earjibbitzdesiree.png" alt="Dancer Jibbitz for Earbuds"><div class="grid-overlay">Detail 12</div></div>
         </section>
 
         <hr class="soft-divider">
