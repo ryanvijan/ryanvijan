@@ -1,3 +1,7 @@
+
+Work misc · HTML
+Copy
+
 <!DOCTYPE html>
 <html lang="en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,65 +14,158 @@
   <link rel="stylesheet" href="assets/css/work-sneakers.css">
 
   <style>
-    .photo-strip-grid {
-      display: grid;
-      grid-template-columns: repeat(8, 1fr);
-      width: 100%;
-      gap: 0;
-      overflow: hidden;
-      margin: 20px 0;
-      border-radius: 4px;
+
+    /* ─── VIDEO SECTION ─────────────────────────────────────────── */
+    .video-section {
+      margin: 32px 0 40px;
     }
 
-    .grid-item {
+    .video-section-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      opacity: 0.4;
+      margin-bottom: 16px;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    /* PSD "marching ants" dashed selection frame */
+    .psd-frame {
       position: relative;
-      height: 200px;
+      border-radius: 2px;
+      padding: 10px;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .psd-frame::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 2px;
+      border: 1.5px dashed rgba(255,255,255,0.55);
+      pointer-events: none;
+      animation: marchingAnts 1.2s linear infinite;
+      background-image:
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.55) 0px, rgba(255,255,255,0.55) 6px, transparent 6px, transparent 12px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.55) 0px, rgba(255,255,255,0.55) 6px, transparent 6px, transparent 12px),
+        repeating-linear-gradient(0deg,  rgba(255,255,255,0.55) 0px, rgba(255,255,255,0.55) 6px, transparent 6px, transparent 12px),
+        repeating-linear-gradient(0deg,  rgba(255,255,255,0.55) 0px, rgba(255,255,255,0.55) 6px, transparent 6px, transparent 12px);
+      background-size: 12px 1.5px, 12px 1.5px, 1.5px 12px, 1.5px 12px;
+      background-position: 0 0, 0 100%, 0 0, 100% 0;
+      background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+      border: none;
+    }
+
+    @keyframes marchingAnts {
+      0%   { background-position: 0 0, -12px 100%, 0 0, 100% -12px; }
+      100% { background-position: 12px 0, 0 100%, 0 12px, 100% 0; }
+    }
+
+    /* corner handles — like PSD selection handles */
+    .psd-frame::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      pointer-events: none;
+      background:
+        /* TL */ linear-gradient(white, white) top left / 6px 6px,
+        /* TR */ linear-gradient(white, white) top right / 6px 6px,
+        /* BL */ linear-gradient(white, white) bottom left / 6px 6px,
+        /* BR */ linear-gradient(white, white) bottom right / 6px 6px,
+        /* T mid */ linear-gradient(white, white) top center / 6px 6px,
+        /* B mid */ linear-gradient(white, white) bottom center / 6px 6px,
+        /* L mid */ linear-gradient(white, white) center left / 6px 6px,
+        /* R mid */ linear-gradient(white, white) center right / 6px 6px;
+      background-repeat: no-repeat;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9/16;
+      background: #000;
+      border-radius: 1px;
       overflow: hidden;
+    }
+
+    .video-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .video-caption {
+      margin-top: 10px;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      opacity: 0.5;
+      text-align: center;
+    }
+
+    /* ─── MASONRY PHOTO GRID ────────────────────────────────────── */
+    .masonry-grid {
+      columns: 4;
+      column-gap: 8px;
+      margin: 20px 0;
+    }
+
+    .masonry-item {
+      position: relative;
+      break-inside: avoid;
+      margin-bottom: 8px;
+      overflow: hidden;
+      border-radius: 3px;
       cursor: pointer;
     }
 
-    .grid-item img {
+    .masonry-item img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
       display: block;
       transition: transform 0.5s ease, filter 0.3s ease;
     }
 
-    .grid-overlay {
+    .masonry-overlay {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
+      inset: 0;
+      background: rgba(0,0,0,0.72);
       color: white;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      align-items: flex-end;
+      padding: 10px 8px;
       opacity: 0;
       transition: opacity 0.3s ease;
-      font-size: 0.6rem;
+      font-size: 0.58rem;
       text-transform: uppercase;
       letter-spacing: 1px;
-      text-align: center;
-      padding: 5px;
+      line-height: 1.3;
       pointer-events: none;
     }
 
-    .grid-item:hover img {
-      filter: blur(2px);
-      transform: scale(1.1);
+    .masonry-item:hover img {
+      filter: blur(1.5px);
+      transform: scale(1.04);
     }
 
-    .grid-item:hover .grid-overlay {
+    .masonry-item:hover .masonry-overlay {
       opacity: 1;
     }
 
-    @media (max-width: 768px) {
-      .photo-strip-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
+    @media (max-width: 900px) {
+      .masonry-grid { columns: 3; }
+      .video-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .masonry-grid { columns: 2; }
+      .video-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -77,7 +174,7 @@
 
   <div class="menu-bar">
     <div class="menu-left">
-      <span class="apple-logo"></span>
+      <span class="apple-logo"></span>
       <span class="menu-item">Ryan</span>
       <span class="menu-item">File</span>
       <span class="menu-item">Edit</span>
@@ -135,69 +232,92 @@
           </div>
         </div>
 
-        <!-- page title -->
         <h1>3D Printing</h1>
         <p class="tagline">
           I recently decided to bring my creative talents toward the world of 3D printing. I taught myself Blender in under 2 weeks, and printed my first market-ready product in 3 weeks. Completely self-taught.
         </p>
-
-        <!-- You can customize all of this -->
         <p>
           I plan to start marketing these via social media when I refine my skills a bit more.
           I always ensure my designs are tied to events/characters that people in my generation connect with to ensure my product has a baseline validity when it goes to market.
         </p>
 
-       <section class="photo-strip-grid">
-          <div class="grid-item"><img src="assets/img/MONKEY.png" alt="Smoking Monkey Incense Holder"><div class="grid-overlay">Smoking Monkey Incense Holder</div></div>
-          <div class="grid-item"><img src="assets/img/WINE.png" alt="Toy Soldier Wine Bottle Holder"><div class="grid-overlay">Toy Soldier Wine Bottle Holder</div></div>
-          <div class="grid-item"><img src="assets/img/earjibbitzcherub.png" alt="Jibbitz for Wired Earbuds (also act as a loop to wrap earbuds around to keep them untangled)"><div class="grid-overlay">Jibbitz for Wired Earbuds (also act as a loop to wrap earbuds around to keep them untangled)</div></div>
-          <div class="grid-item"><img src="assets/img/frame.png" alt="PSD Select Tool Frame"><div class="grid-overlay">PSD Select Tool Frame</div></div>
-          <div class="grid-item"><img src="assets/img/4.png" alt="Apple Folder Notebook (each page has a unique QR code that connects to a digital journal)"><div class="grid-overlay">Apple Folder Notebook (each page has a unique QR code that connects to a digital journal)</div></div>
-          <div class="grid-item"><img src="assets/img/7.png" alt="Rick Owens Lighter Holder"><div class="grid-overlay">Rick Owens Lighter Holder</div></div>
-          <div class="grid-item"><img src="assets/img/9.png" alt="Rick Rubin Plant Holder"><div class="grid-overlay">Rick Rubin Plant Holder</div></div>
-          <div class="grid-item"><img src="assets/img/NET.png" alt="Nettspend Mii Plush with Interactive Video Game via NFC"><div class="grid-overlay">Nettspend Mii Plush with Interactive Video Game via NFC</div></div>
-          <div class="grid-item"><img src="assets/img/earjibbitzleaf.png" alt="Vine Jibbitz for Earbuds"><div class="grid-overlay">Vine Jibbitz for Earbuds</div></div>
-          <div class="grid-item"><img src="assets/img/16.png" alt="Evidence Bags (clear material irony)"><div class="grid-overlay">Evidence Bags (clear material irony)</div></div>
-          <div class="grid-item"><img src="assets/img/earjibbitzdesiree.png" alt="Dancer Jibbitz for Earbuds"><div class="grid-overlay">Dancer Jibbitz for Earbuds</div></div>
-          <div class="grid-item"><img src="assets/img/123.png" alt="Printed Incense Holder"><div class="grid-overlay">Printed Incense Holder</div></div>
-          <div class="grid-item"><img src="assets/img/trueyringtoss.png" alt="True Religion Inspired Ring Toss"><div class="grid-overlay">True Religion Inspired Ring Toss</div></div>
-          <div class="grid-item"><img src="assets/img/soldierlamp_.png" alt="True Religion Inspired Ring Toss"><div class="grid-overlay">Silver Soldier Lamp</div></div>
-          <div class="grid-item"><img src="assets/img/silversurferbookshelf.png" alt="True Religion Inspired Ring Toss"><div class="grid-overlay">Silver Surfer Floting Shelf</div></div>
-          <div class="grid-item"><img src="assets/img/safariwatches.png" alt="True Religion Inspired Ring Toss"><div class="grid-overlay">Safari Watches</div></div>
-         <div class="grid-item"><img src="assets/img/ricebeanbag.png" alt="True Religion Inspired Ring Toss"><div class="grid-overlay">Rice Bag Bean Bag</div></div>
-         <div class="grid-item"><img src="assets/img/lamprender.png" alt="True Religion Inspired Ring Toss"><div class="grid-overlay">Soldier Lamp Render</div></div>
-        </section>
-        
+        <!-- ── VIDEO SECTION ── -->
+        <div class="video-section">
+          <p class="video-section-label">Process &amp; Product Videos</p>
+          <div class="video-grid">
+
+            <div>
+              <div class="psd-frame">
+                <div class="video-wrapper">
+                  <iframe src="https://www.youtube.com/embed/8nHCfWHImwE" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                </div>
+              </div>
+              <p class="video-caption">ESI — Product Demo</p>
+            </div>
+
+            <div>
+              <div class="psd-frame">
+                <div class="video-wrapper">
+                  <iframe src="https://www.youtube.com/embed/EvdQTTzTm5c" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                </div>
+              </div>
+              <p class="video-caption">MVP — Prototype</p>
+            </div>
+
+            <div>
+              <div class="psd-frame">
+                <div class="video-wrapper">
+                  <iframe src="https://www.youtube.com/embed/rTURalRsq5I" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                </div>
+              </div>
+              <p class="video-caption">RYTECH — Concept</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── MASONRY PHOTO GRID ── -->
+        <div class="masonry-grid">
+          <div class="masonry-item"><img src="assets/img/MONKEY.png" alt="Smoking Monkey Incense Holder"><div class="masonry-overlay">Smoking Monkey Incense Holder</div></div>
+          <div class="masonry-item"><img src="assets/img/WINE.png" alt="Toy Soldier Wine Bottle Holder"><div class="masonry-overlay">Toy Soldier Wine Bottle Holder</div></div>
+          <div class="masonry-item"><img src="assets/img/earjibbitzcherub.png" alt="Jibbitz for Wired Earbuds"><div class="masonry-overlay">Jibbitz for Wired Earbuds — loops to keep them untangled</div></div>
+          <div class="masonry-item"><img src="assets/img/frame.png" alt="PSD Select Tool Frame"><div class="masonry-overlay">PSD Select Tool Frame</div></div>
+          <div class="masonry-item"><img src="assets/img/4.png" alt="Apple Folder Notebook"><div class="masonry-overlay">Apple Folder Notebook — QR code per page links to digital journal</div></div>
+          <div class="masonry-item"><img src="assets/img/7.png" alt="Rick Owens Lighter Holder"><div class="masonry-overlay">Rick Owens Lighter Holder</div></div>
+          <div class="masonry-item"><img src="assets/img/9.png" alt="Rick Rubin Plant Holder"><div class="masonry-overlay">Rick Rubin Plant Holder</div></div>
+          <div class="masonry-item"><img src="assets/img/NET.png" alt="Nettspend Mii Plush"><div class="masonry-overlay">Nettspend Mii Plush — Interactive Video Game via NFC</div></div>
+          <div class="masonry-item"><img src="assets/img/earjibbitzleaf.png" alt="Vine Jibbitz for Earbuds"><div class="masonry-overlay">Vine Jibbitz for Earbuds</div></div>
+          <div class="masonry-item"><img src="assets/img/16.png" alt="Evidence Bags"><div class="masonry-overlay">Evidence Bags — clear material irony</div></div>
+          <div class="masonry-item"><img src="assets/img/earjibbitzdesiree.png" alt="Dancer Jibbitz for Earbuds"><div class="masonry-overlay">Dancer Jibbitz for Earbuds</div></div>
+          <div class="masonry-item"><img src="assets/img/123.png" alt="Printed Incense Holder"><div class="masonry-overlay">Printed Incense Holder</div></div>
+          <div class="masonry-item"><img src="assets/img/trueyringtoss.png" alt="True Religion Inspired Ring Toss"><div class="masonry-overlay">True Religion Inspired Ring Toss</div></div>
+          <div class="masonry-item"><img src="assets/img/soldierlamp_.png" alt="Silver Soldier Lamp"><div class="masonry-overlay">Silver Soldier Lamp</div></div>
+          <div class="masonry-item"><img src="assets/img/silversurferbookshelf.png" alt="Silver Surfer Floating Shelf"><div class="masonry-overlay">Silver Surfer Floating Shelf</div></div>
+          <div class="masonry-item"><img src="assets/img/safariwatches.png" alt="Safari Watches"><div class="masonry-overlay">Safari Watches</div></div>
+          <div class="masonry-item"><img src="assets/img/ricebeanbag.png" alt="Rice Bag Bean Bag"><div class="masonry-overlay">Rice Bag Bean Bag</div></div>
+          <div class="masonry-item"><img src="assets/img/lamprender.png" alt="Soldier Lamp Render"><div class="masonry-overlay">Soldier Lamp Render</div></div>
+        </div>
 
         <hr class="soft-divider">
       </section>
     </main>
   </div>
 
-        <!-- add more sections, images, links, etc. as you go -->
-      </section>
-    </main>
-  </div>
-
   <script>
+    /* ── clock ── */
     function updateMenuTime() {
       var el = document.getElementById('menu-date-time');
       if (!el) return;
       var now = new Date();
-      var options = {
-        weekday: 'short',
-        month: 'short',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: '2-digit'
-      };
-      el.textContent = now.toLocaleString(undefined, options);
+      el.textContent = now.toLocaleString(undefined, {
+        weekday: 'short', month: 'short', day: 'numeric',
+        hour: 'numeric', minute: '2-digit'
+      });
     }
-
     updateMenuTime();
     setInterval(updateMenuTime, 1000);
+
+
   </script>
 </body>
 </html>
-
-
